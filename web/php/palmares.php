@@ -17,6 +17,9 @@
 
   ?>
 
+</br>
+<center><h1>Palmares</h1></center>
+
 
 
   <div id="container">
@@ -24,15 +27,41 @@
     </div>
     <div class="col-md-6">
 
-      <div >
-        <button class ="lien bleu" type="lien" value="JOUER" id="jouer">JOUER</button>
+      <div id="poduim0">
+      		<div id="poduim"><center><img src="../image/podium.png" ></center></div>
+          <div id="score1"><h4>MOI</h4></div>
       </div>
-      <div >
-        <button class ="lien rouge" type="lien" value="Palmares" id="palmares">Palmares</button>
 
-        <button class ="lien jaune" type="lien" value="Ajouter une question" id="ajoutQuestion">Ajouter une question</button>
-      </div>
+      <div class="panel panel-default">
+    <table class="table">
+      <tr>
+          <th>Place</th>
+          <th>Nom d'utilisateur</th>
+          <th>score</th>
+      </tr>
+      <tr>
+        <td></br>3</td>
+        <td></br>toi</td>
+        <td></br>84</td>
+
+
+    </tr>
+    <tr>
+      <td></br>4</td>
+      <td></br>toi</td>
+      <td></br>84</td>
+
+    </tr>
+    <tr>
+      <td></br>5</td>
+      <td></br>toi</td>
+      <td></br>84</td>
+
+    </tr>
+
+    </table>
     </div>
+        </div>
     <div class="col-md-3 ">
     </div>
 

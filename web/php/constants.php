@@ -1,5 +1,5 @@
 <?php
-$host = "172.31.3.50";
+$host = "localhost";
 $port = "3306";
 $dbname = "bq";
 $user = "bq";

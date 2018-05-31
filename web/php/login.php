@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 
-$databasse = new Database();
+$database = new Database();
 
 $user = strip_tags(substr($_POST['pseudo'],0,32));
 $pw = strip_tags(substr($_POST['password'],0,32));
@@ -14,11 +14,18 @@ $result = $database->execute($sqlQuery);
 
 if(isset($result[0])){
     session_start();
-    $_SESSION=["pseudo"] = $user;
-        
+    $_SESSION["pseudo"] = $user;
+
+    echo "OK";
     header('Location: menu.php');
+    exit();
 }
 else{
-    header('Location: error.php/baddpassword');
+    echo "KO";
+    header('Location: error.php/baddpassword/'.$cleanpw);
+    exit();
 }
+
+echo "OOKK";
+header('Location: error.php/unknowerror/'.$cleanpw);
 ?>

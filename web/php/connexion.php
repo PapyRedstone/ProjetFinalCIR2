@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype>
 <html lang="fr">
     <head>
@@ -13,7 +17,7 @@
     </head>
     <body>
 	<?php
-include "../php/header.php";
+	include "../php/header.php";
 	
 	?>
 	
@@ -31,7 +35,7 @@ include "../php/header.php";
 		<h3>Connexion</h3>
 		<form method="POST" action="login.php">
 		    <label>Nom d'utilisateur:</label>
-    		    <input type="text" name = "speudo" required>
+    		    <input type="text" name = "pseudo" required>
 		    <label>Mot de passe:</label>
 		    <input type="password" name = "password" required>
 		    
