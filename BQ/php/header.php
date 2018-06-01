@@ -29,6 +29,6 @@
 			<a href="../php/connexion.php" ><button class ="lien rouge" type="lien" value="Deconnection" onclick="../php/connexion.php">Deconnection</button></a>
 		</div>
 				</div>
-
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
