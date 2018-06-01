@@ -1,0 +1,26 @@
+@charset " utf-8 ";
+
+#backcolor{
+	background-color:black ;
+	  width:100%;
+
+}
+#image{
+	margin-top: 1%;
+	margin-left: 70%;
+
+}
+#imageMenu{
+	float:left;
+	width:60%;
+
+}
+
+#boutonMenu {
+		width: 40%;
+}
+
+#imageMenu, #boutonMenu {
+		display:flex;
+    vertical-align: top;
+}
