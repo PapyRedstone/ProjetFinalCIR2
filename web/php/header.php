@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<head>
+    <head>
 	<meta charset="UTF-8">
 	<title>Burger Quizz</title>
 	<!-- Css Styles -->
@@ -9,28 +9,27 @@
 	<link href="../css/style.css" rel="stylesheet" type="text/css" >
 	<link href="../css/header.css" rel="stylesheet" type="text/css" >
 	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link  href = "../css/header.css" rel="stylesheet" type="texte/css" >
-
-</head>
-
-
-
-<body>
-	<div id="backcolor">
-<div id="imageMenu">
+	
+    </head>
+    
+    
+    
+    <body>
+	<div id="backcolor" class="container">
+	    <div id="imageMenu">
 		<img src="../image/burger-quiz.png" id="image">
-			</div>
-		<div id="boutonMenu">
-		<input class ="lien bleu" type="lien" value="Mon Profil" onclick="../php/monprofil.php">
-
+	    </div>
+	    <?php
+	    if(isset($_SESSION["pseudo"])){
+		echo "<div id='boutonMenu'><button class ='lien jaune' type='lien' value='".$_SESSION["pseudo"]."'onclick='location.href=\"../php/monprofil.php\";'>".$_SESSION["pseudo"]."</button></div><div id='boutonMenu'><button class ='lien rouge' type='lien' value='Deconnexion' onclick='location.href=\"../php/logout.php\";'>Deconnexion</button></div>";
+	    }
+	    else{
+		echo "<div id='boutonMenu'><button class ='lien jaune hidden' type='lien' value='Mon Profil'onclick='../php/monprofil.php'>Mon Profil</button></div><div id='boutonMenu'><button class ='lien rouge hidden' type='lien' value='Deconnexion' onclick='../php/logout.php'>Deconnexion</button></div>";
+	    }
+	    ?>
 	</div>
-
-		<div id="boutonMenu">
-			<input class ="lien rouge" type="lien" value="Deconnection" onclick="../php/connexion.php">
-		</div>
-				</div>
-
-</body>
+    </body>
 </html>

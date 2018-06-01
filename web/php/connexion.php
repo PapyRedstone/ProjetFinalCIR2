@@ -17,8 +17,7 @@ session_start();
     </head>
     <body>
 	<?php
-	include "../php/header.php";
-	
+	include "../php/header.php";	
 	?>
 	
 	
@@ -35,7 +34,7 @@ session_start();
 		<h3>Connexion</h3>
 		<form method="POST" action="login.php">
 		    <label>Nom d'utilisateur:</label>
-    		    <input type="text" name = "pseudo" required>
+		    <input type="text" name = "pseudo" required>
 		    <label>Mot de passe:</label>
 		    <input type="password" name = "password" required>
 		    
@@ -53,7 +52,7 @@ session_start();
 		    
 		    <label>Mot de passe:</label>
 		    <input type="password" name='mdp' required>
-		    
+	
 		    <label>Vérification du mot de passe:</label>
 		    <input type="password" name='mdp2' required>
 		    
@@ -62,8 +61,8 @@ session_start();
 		    <input class ="submit jaune" type="submit" value="Soumettre" >
 		</form>
 	    </div>
-	    
 	</div>
 	
     </body>
 </html>
+
