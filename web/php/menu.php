@@ -29,12 +29,12 @@ session_start();
     <div class="col-md-6">
 
       <div >
-        <button class ="lien bleu" type="lien" value="JOUER" id="jouer">JOUER</button>
+        <a href="../php/choixsujet.php" ><button class ="lien bleu" type="lien" value="JOUER" id="jouer">JOUER</button></a>
       </div>
       <div >
-        <button class ="lien rouge" type="lien" value="Palmares" id="palmares">Palmares</button>
+        <a href="../php/palmares.php" ><button class ="lien rouge" type="lien" value="Palmares" id="palmares">Palmares</button></a>
 
-        <button class ="lien jaune" type="lien" value="Ajouter une question" id="ajoutQuestion">Ajouter une question</button>
+        <a href="../php/ajoutquestion.php" ><button class ="lien jaune" type="lien" value="Ajouter une question" id="ajoutQuestion">Ajouter une question</button></a>
       </div>
     </div>
     <div class="col-md-3 ">

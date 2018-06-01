@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!doctype>
 <html lang="fr">
     <head>
@@ -30,20 +29,20 @@ session_start();
 	    </div>
 	    <div class="col-md-1">
 	    </div>
-	    <div class="col-md-4" >
+	    <div class="col-md-3" >
 		<h3>Connexion</h3>
-		<form method="POST" action="login.php">
+		<form method="post" action="login.php">
 		    <label>Nom d'utilisateur:</label>
 		    <input type="text" name = "pseudo" required>
 		    <label>Mot de passe:</label>
 		    <input type="password" name = "password" required>
 		    
-		    <input class ="submit rouge" type="submit" value="Connexion">
+		    <button class ="submit rouge" type="submit" value="Connexion">Connexion</button>
 		</form>
 	    </div>
 	    <div class="col-md-1">
 	    </div>
-	    <div class="col-md-4">
+	    <div class="col-md-3">
 		<h3>Inscription</h3>
 		<form method="POST" action="inscription.php">
 		    
@@ -52,17 +51,17 @@ session_start();
 		    
 		    <label>Mot de passe:</label>
 		    <input type="password" name='mdp' required>
-	
+		    
 		    <label>Vérification du mot de passe:</label>
 		    <input type="password" name='mdp2' required>
 		    
 		    <br>
 		    
-		    <input class ="submit jaune" type="submit" value="Soumettre" >
+		    <button class ="submit jaune" type="submit" value="Soumettre" >Soumettre</button>
 		</form>
 	    </div>
+	    
 	</div>
 	
     </body>
 </html>
-

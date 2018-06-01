@@ -3,8 +3,8 @@ require "database.php";
 
 $database = new Database();
 
-$user = strip_tags(substr($_POST['pseudo'],0,32));
-$pw = strip_tags(substr($_POST['password'],0,32));
+$user = strip_tags($_POST['pseudo']);
+$pw = strip_tags($_POST['password']);
 
 $cleanpw = crypt(md5($pw),md5($user));
 

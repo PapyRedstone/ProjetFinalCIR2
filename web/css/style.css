@@ -4,14 +4,10 @@
   margin: 5%;
 }
 a{
-  text-decoration: none;
-  color: #fdfdfd;
-  height: 100%;
+
+
   width: 100%;
-padding-bottom: 12.7333px;
-padding-left: 40.75px;
-padding-right: 40.75px;
-padding-top: 12.7333px
+
 }
 
 body {
@@ -82,9 +78,7 @@ button[type=lien] {
       box-shadow: 0 5px #aaaaaa;
 }
 
-.hidden{
-    visibility: hidden;
-}
+
 
 .button:hover , button[type=submit]:hover{
   background-color:#0CA434;
@@ -232,7 +226,9 @@ tr:nth-child(odd) {
     background-color: #DAAE0F;
     color:#F8EFCF;
   }
-
+.hidden{
+  visibility: hidden;
+}
 #poduim0{
   margin-top: 0%;
   margin-right: 0%;
@@ -247,4 +243,18 @@ position:absolute;
   top:0%;
 right: 45%;
   z-index:2;
+  color: yellow;
+}
+#score2{
+position:absolute;
+  top:15%;
+right: 72%;
+  z-index:2;
+}
+#score3{
+position:absolute;
+  top:17%;
+right:22%;
+  z-index:2;
+  color: orange;
 }

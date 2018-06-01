@@ -21,6 +21,6 @@
 }
 
 #imageMenu, #boutonMenu {
-display:flex;
+		display:flex;
     vertical-align: top;
 }
