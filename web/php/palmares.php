@@ -25,18 +25,49 @@ session_start();
 	</br>
 	<center><h1>*Palmares*</h1></center>
 	
-	
+	<div class="row" id="menupoduim">
+	    <div class="col-lg-6">
+		<div class="input-group">
+		    <div class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seed <span class="caret"></span></button>
+			<ul class="dropdown-menu">
+			    <li><a href="../palmares.php">Global</a></li>
+			    <?php
+			    require "database.php";
+			    
+			    $database = new Database();
+
+			    $seeds = $database->execute("SELECT seed FROM Jeu ORDER BY seed DESC");
+
+			    $b = true;
+			    
+			    foreach($seeds as $s){
+				if($b){
+				    echo '<li role="separator" class="divider"></li>';
+				    $b = false;
+				}
+				echo '<li><a href="../palmares.php/'.$s["seed"].'">'.$s["seed"].'</a></li>';
+			    }
+			    ?>
+			</ul>
+		    </div><!-- /btn-group -->
+		    <input type="text" class="form-control" aria-label="...">
+		</div><!-- /input-group -->
+	    </div><!-- /.col-lg-6 -->
+	</div>	
 	
 	<div id="container">
 	    <div class="col-md-3">
 	    </div>
 	    <div class="col-md-6">
 		<?php
-		require "database.php";
+		$url = explode("/",$_SERVER["REQUEST_URI"]);
 
-		$database = new Database();
-    
-		$scores = $database->execute("SELECT score, name FROM Palmares AS p, user AS u WHERE seed = '123' AND p.id_user=u.id_user ORDER BY score DESC");
+		if(strncmp($_SERVER["REQUEST_URI"],"palmares.php/",13)){
+		    $scores = $database->execute("SELECT score, name FROM Palmares AS p, user AS u WHERE seed = '".end($url)."' AND p.id_user=u.id_user ORDER BY score DESC");		    
+		}else{
+		    $scores = $database->execute("SELECT score, name FROM Palmares AS p, user AS u WHERE p.id_user=u.id_user ORDER BY score DESC");		    
+		}
 		?>
 		
 		<div id="poduim0">

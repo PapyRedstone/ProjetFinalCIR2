@@ -1,0 +1,34 @@
+<?php
+
+require "database.php";
+
+$database = new Database();
+
+header('Content-Type: text/plain; charset=utf-8');
+header('Cache-control: no-store, no-cache, must-revalidate');
+header('Pragma: no-cache');
+
+$url = explode("/", $_SERVER["REQUEST_URI"]);
+
+switch($_SERVER['REQUEST_METHOD']){
+case "GET":
+    $ressource = $_GET["ressource"];
+    $id = $_GET["id"];
+    
+    switch($ressource){
+    case "theme":
+        echo json_encode($database->execute("SELECT id_theme, theme FROM Theme WHERE est_active=1"));
+        break;
+    }
+    break;
+
+case "POST":
+
+    break;
+}
+
+header('HTTP/1.1 200 OK');
+
+exit();
+
+?>

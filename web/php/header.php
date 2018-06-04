@@ -20,14 +20,14 @@
     <body>
 	<div id="backcolor" class="container">
 	    <div id="imageMenu">
-		<img src="../image/burger-quiz.png" id="image">
+		<a href="../php/menu.php"><img src="../image/burger-quiz.png" id="image"></a>
 	    </div>
 	    <?php
 	    if(isset($_SESSION["pseudo"])){
 		echo "<div id='boutonMenu'><button class ='lien jaune' type='lien' value='".$_SESSION["pseudo"]."'onclick='location.href=\"../php/monprofil.php\";'>".$_SESSION["pseudo"]."</button></div><div id='boutonMenu'><button class ='lien rouge' type='lien' value='Deconnexion' onclick='location.href=\"../php/logout.php\";'>Deconnexion</button></div>";
 	    }
 	    else{
-		echo "<div id='boutonMenu'><button class ='lien jaune hidden' type='lien' value='Mon Profil'onclick='../php/monprofil.php'>Mon Profil</button></div><div id='boutonMenu'><button class ='lien rouge hidden' type='lien' value='Deconnexion' onclick='../php/logout.php'>Deconnexion</button></div>";
+		echo "<div id='boutonMenu'><button class ='lien jaune hidden' type='lien' value='Mon Profil'>Mon Profil</button></div><div id='boutonMenu'><button class ='lien rouge hidden' type='lien' value='Deconnexion'>Deconnexion</button></div>";
 	    }
 	    ?>
 	</div>
