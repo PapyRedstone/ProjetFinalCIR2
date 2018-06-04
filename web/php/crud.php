@@ -43,7 +43,7 @@ case "POST":
         $rep = intval($_POST["rep"]);
         $id = intval($_POST["idq"]);
         
-        $querry = "INSERT INTO Proposition VALUES (NULL, :prop, :rep, 0, :id)";
+        $querry = "INSERT INTO Proposition VALUES (NULL, :prop, :rep, 1, :id)";
         
         $database->execute($querry,array("prop"=>$prop, "rep"=>$rep, "id"=>$id));
         break;
@@ -53,7 +53,7 @@ case "POST":
         $choix2 = $_POST["choix2"];
         $id = $_POST["idt"];
 
-        $querry = "INSERT INTO Question VALUES (NULL, :c1, :c2, 0, :id)";
+        $querry = "INSERT INTO Question VALUES (NULL, :c1, :c2, 1, :id)";
 
         $database->execute($querry, array("c1"=>$choix1, "c2"=>$choix2, "id"=>$id));
         break;
@@ -61,7 +61,7 @@ case "POST":
     case "theme":
         $theme = $_POST["theme"];
 
-        $querry = "INSERT INTO Theme VALUES (NULL, :t, 0)";
+        $querry = "INSERT INTO Theme VALUES (NULL, :t, 1)";
 
         $database->execute($querry, array("t"=>$theme));
         break;

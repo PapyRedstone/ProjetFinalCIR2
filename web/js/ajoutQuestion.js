@@ -71,6 +71,8 @@ function addTheme(){
     theme = document.getElementById("ntheme").value;
 
     ajaxRequest('POST', '/web/php/crud.php/theme', function(){}, 'theme='+theme);
+    
+    ajaxRequest('GET','/web/php/crud.php',callbackTheme,'ressource=theme');
 }
 
 function addQuestion(id){
@@ -78,6 +80,8 @@ function addQuestion(id){
     choix2 = document.getElementById("choix2").value;
 
     ajaxRequest('POST', '/web/php/crud.php/question', function(){}, 'choix1='+choix1+'&choix2='+choix2+'&idt='+id);
+
+    ajaxRequest('GET','/web/php/crud.php',callbackQuestion,'ressource=question&id_theme='+id);
 }
 
 function addProposition(id){
@@ -92,4 +96,6 @@ function addProposition(id){
     }
 
     ajaxRequest('POST', '/web/php/crud.php/proposition', function(){}, 'prop='+proposition+'&rep='+bonneRep+'&idq='+id);
+
+    ajaxRequest('GET','/web/php/crud.php',callbackProposition,'ressource=proposition&id_question='+id);
 }
