@@ -207,19 +207,22 @@ hr{
   margin-left: 0%;
   text-align: center;
   height: 10%;
-  float:left;
+  float: left;
   margin-top: 0%;
   font-size: 20px;
   text-indent: 40%;
 }
 #ajoutQuestion{
+    float: right;
   width:47%;
   margin-left: 53%;
-
+text-decoration:none;
   height: 10%;
-  margin-top: 0%;
+  margin-top: -14.2%;
   font-size: 20px;
   text-align: center !important;
+margin-right: 0%;
+padding-left: 11%;
 
 
 }
@@ -319,10 +322,6 @@ font-size: 200%;
 #timeur0{
   margin-left: 20%;
   margin-right: 20%;
-}
-#timeur1{
-  width: 33%;
-
 }
 
 #retourmenu{

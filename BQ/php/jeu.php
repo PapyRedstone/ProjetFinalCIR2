@@ -63,12 +63,56 @@
   </div>
 
   <div class="progress" id="timeur0">
-<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" id="timeur1">
-<span class="sr-only">33% effectué </span>
+<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+<span class="sr-only">60% effectué </span>
 
 </div>
 </div>
-<center><h2>10.0s</h2></center>
+<script language="JavaScript">
+
+                function t()
+                {
+            var compteur=document.getElementById('compteur');
+            s=duree;
+            m=0;h=0;
+            if(s<0)
+                        {
+                              //  compteur.innerHTML="terminé<br />"+"<a href=../php/jeu.php>continuer</a>"
+                              location.href="../php/jeu.php"
+            }
+                        else
+                        {
+                                if(s>59)
+                                {
+                                        m=Math.floor(s/60);
+                                        s=s-m*60
+                }
+                                if(m>59)
+                                {
+                                        h=Math.floor(m/60);
+                    m=m-h*60
+                                }
+                if(s<10)
+                                {
+                                        s="0"+s
+                }
+                if(m<10)
+                                {
+                    m="0"+m
+                }
+                  compteur.innerHTML=s+"s<br />"
+            }
+            duree=duree-1;
+            window.setTimeout("t();",999);
+
+        }
+
+                </script>
+                <h1><center><div id="compteur"></div></center></h1>
+                <script language="JavaScript">
+                        duree="10";
+                        t();
+                </script>
 
 </body>
 </html>
