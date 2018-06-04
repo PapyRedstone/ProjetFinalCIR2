@@ -38,8 +38,8 @@ CREATE TABLE Question(
 CREATE TABLE Proposition(
         id_proposition Int  Auto_increment  NOT NULL ,
         proposition    Varchar (50) NOT NULL ,
-        est_active     Bool NOT NULL ,
         bonne_reponse  Int NOT NULL ,
+        est_active     Bool NOT NULL ,
         id_question    Int NOT NULL
 	,CONSTRAINT Proposition_PK PRIMARY KEY (id_proposition)
 
@@ -61,15 +61,42 @@ CREATE TABLE user(
 
 
 #------------------------------------------------------------
+# Table: Jeu
+#------------------------------------------------------------
+
+CREATE TABLE Jeu(
+        seed          Int NOT NULL ,
+        nb_fois_jouer Int NOT NULL
+	,CONSTRAINT Jeu_PK PRIMARY KEY (seed)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: Palmares
 #------------------------------------------------------------
 
 CREATE TABLE Palmares(
-        id_palamares Int  Auto_increment  NOT NULL ,
-        score        Int NOT NULL ,
-        id_user      Int NOT NULL
-	,CONSTRAINT Palmares_PK PRIMARY KEY (id_palamares)
+        id_palmares Int  Auto_increment  NOT NULL ,
+        score       Int NOT NULL ,
+        id_user     Int NOT NULL ,
+        seed        Int NOT NULL
+	,CONSTRAINT Palmares_PK PRIMARY KEY (id_palmares)
 
 	,CONSTRAINT Palmares_user_FK FOREIGN KEY (id_user) REFERENCES user(id_user)
+	,CONSTRAINT Palmares_Jeu0_FK FOREIGN KEY (seed) REFERENCES Jeu(seed)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: contient
+#------------------------------------------------------------
+
+CREATE TABLE contient(
+        id_proposition Int NOT NULL ,
+        seed           Int NOT NULL
+	,CONSTRAINT contient_PK PRIMARY KEY (id_proposition,seed)
+
+	,CONSTRAINT contient_Proposition_FK FOREIGN KEY (id_proposition) REFERENCES Proposition(id_proposition)
+	,CONSTRAINT contient_Jeu0_FK FOREIGN KEY (seed) REFERENCES Jeu(seed)
 )ENGINE=InnoDB;
 
