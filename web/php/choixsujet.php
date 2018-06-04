@@ -41,7 +41,7 @@ session_start();
 		    //var_dump($themes);
 
 		    foreach($themes as $e=>$t){
-			echo "<button type='button' class='list-group-item' onclick='location.href=\"../php/jeu.php/theme/".$t["id_theme"]."\"'>".$t["theme"]."</button>";
+			echo "<button type='button' class='list-group-item' onclick='location.href=\"../php/jeu.php?theme=".$t["id_theme"]."\"'>".$t["theme"]."</button>";
 		    }
 		    ?>
 		</div>
@@ -62,8 +62,8 @@ session_start();
 			<?php
 			$seeds = $database->execute("SELECT seed FROM Jeu ORDER BY nb_fois_jouer DESC");
 
-			for($i=0; i< min(10, count($seeds)); $i++){
-			    echo '<button type="button" class="list-group-item" onclick="location.href">'.$seeds[i]["seed"].'</button>';
+			for($i=0; $i< min(10, count($seeds)); $i++){
+			    echo '<button type="button" class="list-group-item" onclick="location.href=\'../php/jeu.php?seed='.$seeds[$i]["seed"].'\'">'.$seeds[$i]["seed"].'</button>';
 			}
 			?>
 		    </div>
