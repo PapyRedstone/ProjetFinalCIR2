@@ -19,7 +19,7 @@ include "../php/header.php";
 ?>
 
 </br>
-<center><h1>Mon Profil</h1></center>
+<center><h1>Ajouter une question</h1></center>
   <div id="container">
   <div class="col-md-4" id="rectangle">
     <label>Theme:</label>
