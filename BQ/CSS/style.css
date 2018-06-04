@@ -618,3 +618,149 @@ progress::-moz-progress-bar{
             -o-transition: width 1.6s linear;
             transition: width 1.6s linear;
           }
+
+          progress::-moz-progress-bar{
+            background: transparent;
+          }
+
+
+          progress[value='100']::-moz-progress-bar {
+              background:        repeating-linear-gradient(
+                        45deg,
+                        rgba(255,255,255,.2) 0,
+                        rgba(255,255,255,.2) 10px,
+                        rgba(255,255,255,0) 10px,
+                        rgba(255,255,255,0) 20px
+                        ),
+                        linear-gradient(
+                          rgba(255,255,255,.1) 50%,
+                          rgba(255,255,255,0) 60%
+                          ),
+                          #0CA434;
+          }
+          progress[value^='9']:not([value^='9.']):not([value='9'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #0CA434;
+          }
+          progress[value^='8']:not([value^='8.']):not([value='8'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #0CA434;
+          }
+          progress[value^='7']:not([value^='7.']):not([value='7'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #0CA434;
+          }
+          progress[value^='6']:not([value^='6.']):not([value='6'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #0CA434;
+          }
+          progress[value^='5']:not([value^='5.']):not([value='5'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #0CA434;
+          }
+          progress[value^='4']:not([value^='4.']):not([value='4'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #DAAE0F;
+          }
+          progress[value^='3']:not([value^='3.']):not([value='3'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #DAAE0F;
+          }
+          progress[value^='2']:not([value^='2.']):not([value='2'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #CA2F1F;
+          }
+          progress[value^='1']:not([value^='1.']):not([value='1']):not([value='100'])::-moz-progress-bar{
+            background:        repeating-linear-gradient(
+                      45deg,
+                      rgba(255,255,255,.2) 0,
+                      rgba(255,255,255,.2) 10px,
+                      rgba(255,255,255,0) 10px,
+                      rgba(255,255,255,0) 20px
+                      ),
+                      linear-gradient(
+                        rgba(255,255,255,.1) 50%,
+                        rgba(255,255,255,0) 60%
+                        ),
+                        #CA2F1F;
+          }
