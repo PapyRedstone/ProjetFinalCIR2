@@ -8,7 +8,7 @@
 	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css" >
 	<link href="../css/header.css" rel="stylesheet" type="text/css" >
-	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link  href = "../css/header.css" rel="stylesheet" type="texte/css" >

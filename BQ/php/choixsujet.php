@@ -11,16 +11,16 @@ session_start();
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css" >
-	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
-	<!--<link rel="manifest" href="FAV/manifest.json">-->
+  <link rel="shortcut icon" href="../image/fav.ico" type="image/x-icon">
+  <link rel="icon" href="../image/fav.ico" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
 	<?php
 	include "../php/header.php";
-	
+
 	?>
-	
+
 	<br>
 	<center><h1>Choix du Sujet</h1></center>
 	<div id="container">
@@ -43,10 +43,10 @@ session_start();
 		    foreach($themes as $_=>$t){
 			echo '<button type="button" class="list-group-item" onclick="location.href=\"../php/jeu.php/theme/'+$t["id_theme"]+'\"">'+$t["theme"]+'</button>';
 		    }
-		    
+
 		    ?>
 		</div>
-		
+
 	    </div>
 	    <div class="col-md-2">
 	    </div>
@@ -68,7 +68,7 @@ session_start();
 		</form>
 	    </div>
 	    <div class="col-md-2">
-	    </div>	    
+	    </div>
 	</div>
     </body>
 </html>
