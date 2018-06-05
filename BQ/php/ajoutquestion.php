@@ -1,83 +1,88 @@
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="author" content="???" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Burger Quizz</title>
-  <!-- Css Styles -->
-<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="../css/style.css" rel="stylesheet" type="text/css" >
-  <!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
-  <!--<link rel="manifest" href="FAV/manifest.json">-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
 <?php
-include "../php/header.php";
-
+session_start();
 ?>
 
-</br>
-<center><h1>Ajouter une question</h1></center>
-  <div id="container">
-  <div class="col-md-4" id="rectangle">
-    <label>Theme:</label>
-    </br>
-    <div class="list-group">
-<button type="button" class="list-group-item">ISEN</button>
-<button type="button" class="list-group-item">People</button>
-<button type="button" class="list-group-item">Animaux</button>
-</div>
-</br>
-<form method="post" >
-<label>Nouveau theme:</label>
-<input type="text" name = "ntheme" >
+<html lang="fr">
+    <head>
+	<meta charset="utf-8">
+	<meta name="author" content="???" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Burger Quizz</title>
+	<!-- Css Styles -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/style.css" rel="stylesheet" type="text/css" >
+	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
+	<!--<link rel="manifest" href="FAV/manifest.json">-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../js/ajax.js"></script>
+	<script src="../js/ajoutQuestion.js"></script>
+    </head>
+    <body>
+	<?php
+	include "../php/header.php";
 
-<button class ="submit rouge" type="submit" value="nouveautheme">Ajout</button>
-</form>
+	?>
+		<br>
+        <br>
+	<center><h1>Ajouter une question</h1></center>
+	<div id="container">
+	    <div class="col-md-4" id="rectangle">
+		<label>Theme:</label>
+ 	        <br>
+		<div class="list-group" id="theme">
 
+		</div>
+	        <br>
+		<label>Nouveau theme:</label>
+		<input type="text" id="ntheme" >
 
-      </div>
-<div class="col-md-1">
-  </div>
-  <div class="col-md-4" id="rectangle">
-    <label>Question:</label>
-    </br>
-    <div class="list-group">
-<button type="button" class="list-group-item">ISEN</button>
-<button type="button" class="list-group-item">People</button>
-<button type="button" class="list-group-item">Animaux</button>
-</div>
-</br>
-<form method="post" >
-<label>Nouvelle Question:</label>
-<input type="text" name = "nquestion" >
+		<button class ="submit rouge" type="submit" id="adddTheme" onclick="addTheme();">Ajout</button>
+	    </div>
+	    <div class="col-md-1">
+	    </div>
+	    <div class="col-md-4" id="rectangle">
+		<label>Question:</label>
+		<br>
+		<div class="list-group" id="question">
 
-<button class ="submit jaune" type="submit" value="nouvellequestion">Ajout</button>
-</form>
+		</div>
+		<br>
+		<label>Nouvelle Question:</label>
+		<br>
+		<label>Choix 1</label>
+		<input type="text" id="choix1">
 
+		<label>Choix 2</label>
+		<input type="text" id="choix2">
 
-      </div>
-  <div class="col-md-1">
-    </div>
-  <div class="col-md-4" id="rectangle">
-    <label>Proposition:</label>
-    </br>
-    <div class="list-group">
-<button type="button" class="list-group-item">ISEN</button>
-<button type="button" class="list-group-item">People</button>
-<button type="button" class="list-group-item">Animaux</button>
-</div>
-</br>
-<form method="post" >
-<label>Nouvelle Proposition:</label>
-<input type="text" name = "nproposition" >
+		<button class ="submit jaune" type="submit" id="addQues">Ajout</button>
+	    </div>
+	    <div class="col-md-1">
+	    </div>
+	    <div class="col-md-4" id="rectangle">
+		<label>Proposition:</label>
+	        <br>
+		<div class="list-group" id="proposition">
 
-<button class ="submit rouge" type="submit" value="nouvelleproposition">Ajout</button>
-</form>
-  </div>
+		</div>
+	        <br>
 
-</div>
-</body>
+		<label>Nouvelle Proposition:</label>
+		<input type="text" id="nproposition" >
+
+		<center><label id="radio1"></label></center>
+		<input type="radio" name="bonneRep" value="1">
+
+		<center><label id="radio2"></label></center>
+		<input type="radio" name="bonneRep" value="2">
+
+		<center><label>Les deux</label></center>
+		<input type="radio" name="bonneRep" value="3">
+
+		<button class ="submit rouge" type="submit" id="addProp">Ajout</button>
+	    </div>
+	</div>
+  	<p style="margin-left:5%">*Vos propositions seront étudiés par un administrateur puis ajouter au jeu</p>
+    </body>
 </html>
