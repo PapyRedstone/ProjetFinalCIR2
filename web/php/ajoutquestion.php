@@ -21,12 +21,11 @@ session_start();
     <body>
 	<?php
 	include "../php/header.php";
-	
+
 	?>
-	
+		<br>
         <br>
 	<center><h1>Ajouter une question</h1></center>
-	<p>Vos propositions seront étudiés par un administrateur puis ajouter au jeu</p>
 	<div id="container">
 	    <div class="col-md-4" id="rectangle">
 		<label>Theme:</label>
@@ -37,7 +36,7 @@ session_start();
 	        <br>
 		<label>Nouveau theme:</label>
 		<input type="text" id="ntheme" >
-		
+
 		<button class ="submit rouge" type="submit" id="adddTheme" onclick="addTheme();">Ajout</button>
 	    </div>
 	    <div class="col-md-1">
@@ -56,7 +55,7 @@ session_start();
 
 		<label>Choix 2</label>
 		<input type="text" id="choix2">
-		
+
 		<button class ="submit jaune" type="submit" id="addQues">Ajout</button>
 	    </div>
 	    <div class="col-md-1">
@@ -71,18 +70,19 @@ session_start();
 
 		<label>Nouvelle Proposition:</label>
 		<input type="text" id="nproposition" >
-		
+
 		<center><label id="radio1"></label></center>
 		<input type="radio" name="bonneRep" value="1">
-		
+
 		<center><label id="radio2"></label></center>
 		<input type="radio" name="bonneRep" value="2">
-		
+
 		<center><label>Les deux</label></center>
 		<input type="radio" name="bonneRep" value="3">
-		
+
 		<button class ="submit rouge" type="submit" id="addProp">Ajout</button>
 	    </div>
 	</div>
+  	<p style="margin-left:5%">*Vos propositions seront étudiés par un administrateur puis ajouter au jeu</p>
     </body>
 </html>

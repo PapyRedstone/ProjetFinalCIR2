@@ -1,6 +1,48 @@
 <?php
 session_start();
+
+require "database.php";
+		 
+$database = new Database();
+
+$questions = array();
+
+if(isset($_GET["seed"])){
+    $seed = $_GET["seed"];
+
+    $querry = "SELECT bonne_reponse, proposition, choix1, choix2 FROM Question as q, Proposition as p,contient as c WHERE c.seed = '$seed' AND p.id_proposition = c.id_proposition AND p.id_question = q.id_question";
+    
+    $questions = $database->execute($querry);
+
+    $questions[] = $seed;
+}else{
+    $theme = $_GET["theme"];
+    
+    $querry = "SELECT id_proposition, bonne_reponse, proposition, choix1, choix2 FROM Question as q, Proposition as p, Theme as t WHERE t.id_theme = '$theme' AND q.id_theme = t.id_theme AND p.id_question = q.id_question";
+
+    $seed = rand(0,100000);
+
+    srand($seed);
+
+    $q = $database->execute($querry);
+
+    $keys = array_rand($q, 3);
+
+    $database->execute("INSERT INTO Jeu Values ($seed,0)");
+
+    $querry = "INSERT INTO contient VALUES (:id,:seed)";
+    
+    foreach($keys as $k){
+        $questions[] = $q[$k];
+        
+        $database->execute($querry, array("id"=>$q[$k]["id_proposition"], "seed"=>$seed));
+    }
+
+    $questions[] = $seed;
+}
+$questions = json_encode($questions)
 ?>
+
 <!doctype>
 <html lang="fr">
     <head>
@@ -18,16 +60,21 @@ session_start();
     <body>
 	<?php
 	include "../php/header.php";
-	
 	?>
+
+	<div id="js" style="display: none;">
+	<?php
+	echo htmlspecialchars($questions);
+	?>
+	</div>
 	
 	<br>
 	<br>
 	
-	<center><h1>Elle m'a sucé ?</h1></center>
+	<center><h1 id="proposition"></h1></center>
 	<br>
 	<br>
-	<center><h3>Ta mère, ta soeur , ou les deux :</h3></center>
+	<center><h3 id="question"></h3></center>
 	
 	
 	<div id="container" >
@@ -37,7 +84,7 @@ session_start();
 	    <div class="col-md-2">
 		
 		<div >
-		    <a href="../php/jeu.php" ><button class ="lien bleu" type="reponse0" value="JOUER" id="reponse">TA MERE</button></a>
+		    <button class ="lien bleu" id="reponse1" onclick="clickOnButton(1)"></button>
 		</div>
 		
 	    </div>
@@ -46,7 +93,7 @@ session_start();
 	    <div class="col-md-2">
 		
 		<div >
-		    <a href="../php/jeu.php" ><button class ="lien bleu" type="reponse0" value="JOUER" id="reponse">TA SOEUR</button></a>
+		    <button class ="lien bleu" id="reponse2" onclick="clickOnButton(2)"></button>
 		</div>
 		
 	    </div>
@@ -55,7 +102,7 @@ session_start();
 	    <div class="col-md-2">
 		
 		<div >
-		    <a href="../php/jeu.php" ><button class ="lien bleu" type="reponse1" value="JOUER" id="reponse">LES DEUX</button></a>
+		    <button class ="lien bleu" onclick="clickOnButton(3)">LES DEUX</button>
 		</div>
 		
 	    </div>
@@ -66,13 +113,6 @@ session_start();
 	<div id="progress">
 	    <progress value="100" min="0" max="100"><span></span></progress>
 	</div>
-	
-	
-	
-	<script language="JavaScript">
-	 
-        </script>
-	
         <h1><center><div id="compteur"></div></center></h1>
     </body>
 </html>

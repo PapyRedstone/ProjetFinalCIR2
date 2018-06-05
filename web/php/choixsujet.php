@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <html lang="fr">
     <head>
 	<meta charset="utf-8">
@@ -14,11 +15,11 @@ session_start();
 	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
 	<!--<link rel="manifest" href="FAV/manifest.json">-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     </head>
     <body>
 	<?php
-	include "../php/header.php";
-	
+	include "../php/header.php";	
 	?>
 	
 	<br>
@@ -51,24 +52,22 @@ session_start();
 	    </div>
 	    <div class="col-md-3" id="rectangle">
 		<center><h4>Rejouer une Partie</h4></center>
-		<form method="post" >
-		    <label>Seed:</label>
-		    <br>
-		    <br>
-		    <input type="text" name = "seed" >
-		    <label>Seed les plus joeur:</label>
-		    <div class="list-group">
-			
-			<?php
-			$seeds = $database->execute("SELECT seed FROM Jeu ORDER BY nb_fois_jouer DESC");
-
-			for($i=0; $i< min(10, count($seeds)); $i++){
-			    echo '<button type="button" class="list-group-item" onclick="location.href=\'../php/jeu.php?seed='.$seeds[$i]["seed"].'\'">'.$seeds[$i]["seed"].'</button>';
-			}
-			?>
-		    </div>
-		    <a href="../php/jeu.php" ><button class ="submit jaune" type="submit" value="rejouer partie" >Demarrer le jeu</button></a>
-		</form>
+		<label>Seed:</label>
+		<br>
+		<br>
+		<input type="text" id="seed" >
+		<label>Seed les plus jouer:</label>
+		<div class="list-group">
+		    
+		    <?php
+		    $seeds = $database->execute("SELECT seed FROM Jeu ORDER BY nb_fois_jouer DESC");
+		    
+		    for($i=0; $i< min(10, count($seeds)); $i++){
+			echo '<button type="button" class="list-group-item" onclick="location.href=\'../php/jeu.php?seed='.$seeds[$i]["seed"].'\'">'.$seeds[$i]["seed"].'</button>';
+		    }
+		    ?>
+		</div>
+		<button class ="submit jaune" type="submit" value="rejouer partie" onclick='location.href="../php/jeu.php?seed="+document.getElementById("seed").value'>Demarrer le jeu</button>
 	    </div>
 	    <div class="col-md-2">
 	    </div>	    

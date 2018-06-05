@@ -1,48 +1,63 @@
-function modifValues(){
-    var val = $('#progress progress').attr('value');
-    var newVal = val*1-0.25;
-    $('#progress progress').attr('value',newVal).text(txt);
-    
-}
+var chrono=10;
+var score=0;
+var questions=[];
+var timeId;
+var seed;
 
 window.onload=function(){
-    setInterval(modifValues(),25);
-    
-    duree="10";
-    temps();
+    setInterval(modifValues,25);
+    questions = JSON.parse(document.getElementById("js").textContent);
+    seed = questions.pop();
+    displayNext();
 }
 
-function temps()
+function modifValues(){
+    var val = $('#progress progress').attr('value');
+    var newVal = val-0.25;
+    $('#progress progress').attr('value',newVal);
+}
+
+function time()
 {
+    if(chrono<=0){
+        clickOnButton(0);
+    }
+
+    chrono--;
     var compteur=document.getElementById('compteur');
-    s=duree;
-    m=0;h=0;
-    if(s<0)
-    {
-        location.href="../php/jeu.php"
+    compteur.innerHTML=(chrono+1)+"s<br>";
+
+    timeId = window.setTimeout(time,1000);
+}
+
+function clickOnButton(id_button){
+    if(id_button == parseInt(currentQuestion["bonne_reponse"])){
+	score += chrono;
     }
-    else
-    {
-        if(s>59)
-        {
-            m=Math.floor(s/60);
-            s=s-m*60
-	}
-        if(m>59)
-        {
-            h=Math.floor(m/60);
-	    m=m-h*60
-        }
-        if(s<10)
-        {
-            s="0"+s
-	}
-        if(m<10)
-        {
-            m="0"+m
-	}
-        compteur.innerHTML=s+"s<br />"
+
+    if(questions.length != 0){
+	window.setTimeout(displayNext, 100);
+    }else{
+	window.setTimeout(location.href = "../php/notation.php?score="+score+"&seed="+seed, 100);
     }
-    duree=duree-1;
-    window.setTimeout("temps();",999);
+}
+
+function displayNext(){
+    currentQuestion = questions.shift();
+
+    document.getElementById("reponse1").innerHTML = currentQuestion["choix1"];
+
+    document.getElementById("reponse2").innerHTML = currentQuestion["choix2"];
+
+    document.getElementById("proposition").innerHTML = currentQuestion["proposition"];
+
+    document.getElementById("question").innerHTML = currentQuestion["choix1"]+', '+currentQuestion["choix2"]+' ou les deux ?';
+
+    $('#progress progress').attr('value',100);
+
+    clearTimeout(timeId);
+
+    chrono=10;
+
+    time();
 }
