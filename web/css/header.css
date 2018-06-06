@@ -1,27 +1,28 @@
 @charset " utf-8 ";
 
-#backcolor{
+#back{
 	background-color:black ;
 	  width:100%;
+				display:flex;
+				align-items: center;
 
-}
-#image{
-	margin-top: 1%;
-	margin-left: 70%;
 
 }
 #imageMenu{
-	float:left;
-	width:60%;
+	width:100%;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	align-content:center;
+	margin-left: 43%;
 
 }
 
 #boutonMenu {
-	    margin-left: 85%;
-		width: 40%;
+width: 150%;
+margin-left: 55%;
 }
-
-#imageMenu, #boutonMenu {
-		display:flex;
-    vertical-align: top;
+#back1{
+	width: 100%;
+		flex-direction: column;
+		margin-right: 0%;
 }

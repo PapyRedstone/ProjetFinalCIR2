@@ -2,7 +2,7 @@
 session_start();
 
 require "database.php";
-		 
+
 $database = new Database();
 
 $questions = array();
@@ -11,13 +11,13 @@ if(isset($_GET["seed"])){
     $seed = $_GET["seed"];
 
     $querry = "SELECT bonne_reponse, proposition, choix1, choix2 FROM Question as q, Proposition as p,contient as c WHERE c.seed = '$seed' AND p.id_proposition = c.id_proposition AND p.id_question = q.id_question";
-    
+
     $questions = $database->execute($querry);
 
     $questions[] = $seed;
 }else{
     $theme = $_GET["theme"];
-    
+
     $querry = "SELECT id_proposition, bonne_reponse, proposition, choix1, choix2 FROM Question as q, Proposition as p, Theme as t WHERE t.id_theme = '$theme' AND q.id_theme = t.id_theme AND p.id_question = q.id_question";
 
     $seed = rand(0,100000);
@@ -31,10 +31,10 @@ if(isset($_GET["seed"])){
     $database->execute("INSERT INTO Jeu Values ($seed,0)");
 
     $querry = "INSERT INTO contient VALUES (:id,:seed)";
-    
+
     foreach($keys as $k){
         $questions[] = $q[$k];
-        
+
         $database->execute($querry, array("id"=>$q[$k]["id_proposition"], "seed"=>$seed));
     }
 
@@ -52,8 +52,8 @@ $questions = json_encode($questions)
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css" >
-	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
-	<!--<link rel="manifest" href="FAV/manifest.json">-->
+	<link rel="shortcut icon" href="../image/fav.ico" type="image/x-icon">
+  <link rel="icon" href="../image/fav.ico" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="../js/game.js"></script>
     </head>
@@ -67,48 +67,48 @@ $questions = json_encode($questions)
 	echo htmlspecialchars($questions);
 	?>
 	</div>
-	
+
 	<br>
 	<br>
-	
-	<center><h1 id="proposition"></h1></center>
+	<center><h2 id="question"></h2></center>
+
 	<br>
 	<br>
-	<center><h3 id="question"></h3></center>
-	
-	
+<center><h1 id="proposition"></h1></center>
+
+
 	<div id="container" >
-	    
+
 	    <div class="col-md-2">
 	    </div>
 	    <div class="col-md-2">
-		
+
 		<div >
-		    <button class ="lien bleu" id="reponse1" onclick="clickOnButton(1)"></button>
+		    <button class ="lien bleu" id="reponse1" type="reponse" onclick="clickOnButton(1)" ></button>
 		</div>
-		
+
 	    </div>
 	    <div class="col-md-1">
 	    </div>
 	    <div class="col-md-2">
-		
+
 		<div >
-		    <button class ="lien bleu" id="reponse2" onclick="clickOnButton(2)"></button>
+		    <button class ="lien bleu" id="reponse2" type="reponse" onclick="clickOnButton(2)"></button>
 		</div>
-		
+
 	    </div>
 	    <div class="col-md-1">
 	    </div>
 	    <div class="col-md-2">
-		
+
 		<div >
-		    <button class ="lien bleu" onclick="clickOnButton(3)">LES DEUX</button>
+		    <button class ="lien bleu" id="reponse3" type="reponse" onclick="clickOnButton(3)">Les Deux</button>
 		</div>
-		
+
 	    </div>
 	    <div class="col-md-2 ">
 	    </div>
-	    
+
 	</div>
 	<div id="progress">
 	    <progress value="100" min="0" max="100"><span></span></progress>
