@@ -24,8 +24,8 @@ $database->execute($querry, array("score"=>$score, "name"=>$_SESSION["pseudo"], 
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css" >
-	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
-	<!--<link rel="manifest" href="FAV/manifest.json">-->
+  <link rel="shortcut icon" href="../image/fav.ico" type="image/x-icon">
+  <link rel="icon" href="../image/fav.ico" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 	 var etoiles = 0;
@@ -37,15 +37,19 @@ $database->execute($querry, array("score"=>$score, "name"=>$_SESSION["pseudo"], 
     <body>
 	<?php
 	include "../php/header.php";
-	
+
 	?>
-	
+
 	<br>
 	<br>
-	
-	
-	
-	<center><h1>Comment avez vous trouvez le Quiz</h1></center>
+
+<center><h1>Votre Score :<?php echo $score;?> points </h1></center>
+  <br>
+  <center><h3>Votre Seed :<?php echo $seed;?></h3></center>
+	<br>
+	<center><h2>Comment avez vous trouvez le Quiz ?</h2></center>
+
+
 	<div id="container">
 	    <div class="col-md-2">
 	    </div>
@@ -57,13 +61,13 @@ $database->execute($querry, array("score"=>$score, "name"=>$_SESSION["pseudo"], 
 		    }
 		    ?>
 		</div>
-		
+
 		<button class ="lien bleu" type="lien" value="JOUER" id="retourmenu" onclick="endPage()">Retour au menu</button>
             </div>
 	    <div class="col-md-2 ">
 	    </div>
-	    
+
 	</div>
-	
+
     </body>
 </html>

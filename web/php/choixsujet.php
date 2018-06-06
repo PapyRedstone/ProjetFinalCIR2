@@ -12,16 +12,16 @@ session_start();
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css" >
-	<!--<link rel="icon" type="image/png" sizes="16x16" href="FAV/favicon-16x16.png">-->
-	<!--<link rel="manifest" href="FAV/manifest.json">-->
+  <link rel="shortcut icon" href="../image/fav.ico" type="image/x-icon">
+  <link rel="icon" href="../image/fav.ico" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     </head>
     <body>
 	<?php
-	include "../php/header.php";	
+	include "../php/header.php";
 	?>
-	
+
 	<br>
 	<center><h1>Choix du Sujet</h1></center>
 	<div id="container">
@@ -46,7 +46,7 @@ session_start();
 		    }
 		    ?>
 		</div>
-		
+
 	    </div>
 	    <div class="col-md-2">
 	    </div>
@@ -58,10 +58,10 @@ session_start();
 		<input type="text" id="seed" >
 		<label>Seed les plus jouer:</label>
 		<div class="list-group">
-		    
+
 		    <?php
 		    $seeds = $database->execute("SELECT seed FROM Jeu ORDER BY nb_fois_jouer DESC");
-		    
+
 		    for($i=0; $i< min(10, count($seeds)); $i++){
 			echo '<button type="button" class="list-group-item" onclick="location.href=\'../php/jeu.php?seed='.$seeds[$i]["seed"].'\'">'.$seeds[$i]["seed"].'</button>';
 		    }
@@ -70,7 +70,7 @@ session_start();
 		<button class ="submit jaune" type="submit" value="rejouer partie" onclick='location.href="../php/jeu.php?seed="+document.getElementById("seed").value'>Demarrer le jeu</button>
 	    </div>
 	    <div class="col-md-2">
-	    </div>	    
+	    </div>
 	</div>
     </body>
 </html>
