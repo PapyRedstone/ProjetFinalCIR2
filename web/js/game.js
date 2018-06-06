@@ -32,8 +32,8 @@ function time()
 
 function clickOnButton(id_button){
     if(id_button == parseInt(currentQuestion["bonne_reponse"])){
-	score += chrono;
-    }
+	score += chrono+1;
+}
 
     if(questions.length != 0){
 	window.setTimeout(displayNext, 100);
@@ -44,6 +44,12 @@ function clickOnButton(id_button){
 
 function displayNext(){
     currentQuestion = questions.shift();
+
+    document.getElementById('reponse1').setAttribute("type", "reponse0");
+    document.getElementById('reponse2').setAttribute("type", "reponse0");
+    document.getElementById('reponse3').setAttribute("type", "reponse0");
+
+    document.getElementById("reponse"+currentQuestion["bonne_reponse"]).setAttribute("type", "reponse1");
 
     document.getElementById("reponse1").innerHTML = currentQuestion["choix1"];
 
