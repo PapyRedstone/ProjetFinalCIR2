@@ -14,8 +14,8 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+CXXFLAGS      = -pipe -g -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+INCPATH       = -I. -I. -Iinclude -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -35,10 +35,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = BackOffice1.0.0
-DISTDIR = /home/alex/Documents/ProjetFinalCIR2/BackOffice/.tmp/BackOffice1.0.0
+DISTDIR = /home/alex/ProjetFinalCIR2/BackOffice/.tmp/BackOffice1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -lmysqlcppconn -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -50,8 +50,35 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = main.cpp 
-OBJECTS       = main.o
+SOURCES       = src/Database.cpp \
+		src/Functions.cpp \
+		src/main.cpp \
+		src/mainwindow.cpp \
+		src/menu.cpp \
+		src/proposition.cpp \
+		src/question.cpp \
+		src/theme.cpp \
+		src/utilisateur.cpp moc_mainwindow.cpp \
+		moc_menu.cpp \
+		moc_proposition.cpp \
+		moc_question.cpp \
+		moc_theme.cpp \
+		moc_utilisateur.cpp
+OBJECTS       = Database.o \
+		Functions.o \
+		main.o \
+		mainwindow.o \
+		menu.o \
+		proposition.o \
+		question.o \
+		theme.o \
+		utilisateur.o \
+		moc_mainwindow.o \
+		moc_menu.o \
+		moc_proposition.o \
+		moc_question.o \
+		moc_theme.o \
+		moc_utilisateur.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -125,7 +152,22 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		BackOffice.pro  main.cpp
+		BackOffice.pro include/Database.hpp \
+		include/Functions.hpp \
+		include/mainwindow.h \
+		include/menu.h \
+		include/proposition.h \
+		include/question.h \
+		include/theme.h \
+		include/utilisateur.h src/Database.cpp \
+		src/Functions.cpp \
+		src/main.cpp \
+		src/mainwindow.cpp \
+		src/menu.cpp \
+		src/proposition.cpp \
+		src/question.cpp \
+		src/theme.cpp \
+		src/utilisateur.cpp
 QMAKE_TARGET  = BackOffice
 DESTDIR       = 
 TARGET        = BackOffice
@@ -134,7 +176,7 @@ TARGET        = BackOffice
 first: all
 ####### Build rules
 
-$(TARGET):  $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_menu.h ui_proposition.h ui_question.h ui_theme.h ui_utilisateur.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: BackOffice.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -307,7 +349,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/Database.hpp include/Functions.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/menu.cpp src/proposition.cpp src/question.cpp src/theme.cpp src/utilisateur.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents UI/mainwindow.ui UI/menu.ui UI/proposition.ui UI/question.ui UI/theme.ui UI/utilisateur.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -337,26 +381,204 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
-	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
+	g++ -pipe -g -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
+moc_mainwindow.cpp: include/menu.h \
+		include/mainwindow.h \
+		include/theme.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/utilisateur.h \
+		include/mainwindow.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/mainwindow.h -o moc_mainwindow.cpp
+
+moc_menu.cpp: include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		include/menu.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/menu.h -o moc_menu.cpp
+
+moc_proposition.cpp: include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		include/proposition.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/proposition.h -o moc_proposition.cpp
+
+moc_question.cpp: include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		include/question.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/question.h -o moc_question.cpp
+
+moc_theme.cpp: include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		include/theme.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/theme.h -o moc_theme.cpp
+
+moc_utilisateur.cpp: include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		include/utilisateur.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/utilisateur.h -o moc_utilisateur.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all:
+compiler_uic_make_all: ui_mainwindow.h ui_menu.h ui_proposition.h ui_question.h ui_theme.h ui_utilisateur.h
 compiler_uic_clean:
+	-$(DEL_FILE) ui_mainwindow.h ui_menu.h ui_proposition.h ui_question.h ui_theme.h ui_utilisateur.h
+ui_mainwindow.h: UI/mainwindow.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic UI/mainwindow.ui -o ui_mainwindow.h
+
+ui_menu.h: UI/menu.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic UI/menu.ui -o ui_menu.h
+
+ui_proposition.h: UI/proposition.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic UI/proposition.ui -o ui_proposition.h
+
+ui_question.h: UI/question.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic UI/question.ui -o ui_question.h
+
+ui_theme.h: UI/theme.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic UI/theme.ui -o ui_theme.h
+
+ui_utilisateur.h: UI/utilisateur.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic UI/utilisateur.ui -o ui_utilisateur.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
-main.o: main.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
+Database.o: src/Database.cpp include/Database.hpp \
+		include/Functions.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Database.o src/Database.cpp
+
+Functions.o: src/Functions.cpp include/Functions.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Functions.o src/Functions.cpp
+
+main.o: src/main.cpp include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
+
+mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o src/mainwindow.cpp
+
+menu.o: src/menu.cpp include/menu.h \
+		include/mainwindow.h \
+		include/theme.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/utilisateur.h \
+		ui_menu.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o src/menu.cpp
+
+proposition.o: src/proposition.cpp include/proposition.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		ui_proposition.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o proposition.o src/proposition.cpp
+
+question.o: src/question.cpp include/question.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		include/utilisateur.h \
+		ui_question.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o question.o src/question.cpp
+
+theme.o: src/theme.cpp include/theme.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/utilisateur.h \
+		ui_theme.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o theme.o src/theme.cpp
+
+utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/theme.h \
+		ui_utilisateur.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilisateur.o src/utilisateur.cpp
+
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_menu.o: moc_menu.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_menu.o moc_menu.cpp
+
+moc_proposition.o: moc_proposition.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_proposition.o moc_proposition.cpp
+
+moc_question.o: moc_question.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_question.o moc_question.cpp
+
+moc_theme.o: moc_theme.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_theme.o moc_theme.cpp
+
+moc_utilisateur.o: moc_utilisateur.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_utilisateur.o moc_utilisateur.cpp
 
 ####### Install
 
