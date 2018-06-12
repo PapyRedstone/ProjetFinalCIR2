@@ -38,7 +38,7 @@ DISTNAME      = BackOffice1.0.0
 DISTDIR = /home/alex/ProjetFinalCIR2/BackOffice/.tmp/BackOffice1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) -lmysqlcppconn -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -lmysqlcppconn -lcrypt -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -54,11 +54,14 @@ SOURCES       = src/Database.cpp \
 		src/Functions.cpp \
 		src/main.cpp \
 		src/mainwindow.cpp \
+		src/md5.cpp \
 		src/menu.cpp \
 		src/proposition.cpp \
 		src/question.cpp \
+		src/ScoreTable.cpp \
 		src/theme.cpp \
-		src/utilisateur.cpp moc_mainwindow.cpp \
+		src/utilisateur.cpp moc_ButtonID.cpp \
+		moc_mainwindow.cpp \
 		moc_menu.cpp \
 		moc_proposition.cpp \
 		moc_question.cpp \
@@ -68,11 +71,14 @@ OBJECTS       = Database.o \
 		Functions.o \
 		main.o \
 		mainwindow.o \
+		md5.o \
 		menu.o \
 		proposition.o \
 		question.o \
+		ScoreTable.o \
 		theme.o \
 		utilisateur.o \
+		moc_ButtonID.o \
 		moc_mainwindow.o \
 		moc_menu.o \
 		moc_proposition.o \
@@ -152,8 +158,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		BackOffice.pro include/Database.hpp \
+		BackOffice.pro include/ButtonID.hpp \
+		include/Database.hpp \
 		include/Functions.hpp \
+		include/md5.hpp \
+		include/ScoreTable.hpp \
 		include/mainwindow.h \
 		include/menu.h \
 		include/proposition.h \
@@ -163,9 +172,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/Functions.cpp \
 		src/main.cpp \
 		src/mainwindow.cpp \
+		src/md5.cpp \
 		src/menu.cpp \
 		src/proposition.cpp \
 		src/question.cpp \
+		src/ScoreTable.cpp \
 		src/theme.cpp \
 		src/utilisateur.cpp
 QMAKE_TARGET  = BackOffice
@@ -349,8 +360,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/Database.hpp include/Functions.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/menu.cpp src/proposition.cpp src/question.cpp src/theme.cpp src/utilisateur.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/ButtonID.hpp include/Database.hpp include/Functions.hpp include/md5.hpp include/ScoreTable.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/md5.cpp src/menu.cpp src/proposition.cpp src/question.cpp src/ScoreTable.cpp src/theme.cpp src/utilisateur.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents UI/mainwindow.ui UI/menu.ui UI/proposition.ui UI/question.ui UI/theme.ui UI/utilisateur.ui $(DISTDIR)/
 
 
@@ -383,15 +394,23 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
+compiler_moc_header_make_all: moc_ButtonID.cpp moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
+	-$(DEL_FILE) moc_ButtonID.cpp moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
+moc_ButtonID.cpp: include/ButtonID.hpp \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/ButtonID.hpp -o moc_ButtonID.cpp
+
 moc_mainwindow.cpp: include/menu.h \
 		include/mainwindow.h \
 		include/theme.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		include/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -403,6 +422,9 @@ moc_menu.cpp: include/mainwindow.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		include/menu.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -414,6 +436,9 @@ moc_proposition.cpp: include/mainwindow.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		include/proposition.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -425,6 +450,9 @@ moc_question.cpp: include/mainwindow.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		include/question.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -436,6 +464,9 @@ moc_theme.cpp: include/mainwindow.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		include/theme.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -447,6 +478,9 @@ moc_utilisateur.cpp: include/mainwindow.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		include/utilisateur.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -503,7 +537,10 @@ main.o: src/main.cpp include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h
+		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
 mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
@@ -512,8 +549,14 @@ mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o src/mainwindow.cpp
+
+md5.o: src/md5.cpp include/md5.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o md5.o src/md5.cpp
 
 menu.o: src/menu.cpp include/menu.h \
 		include/mainwindow.h \
@@ -521,6 +564,9 @@ menu.o: src/menu.cpp include/menu.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		ui_menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o src/menu.cpp
 
@@ -531,6 +577,9 @@ proposition.o: src/proposition.cpp include/proposition.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		ui_proposition.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o proposition.o src/proposition.cpp
 
@@ -541,8 +590,22 @@ question.o: src/question.cpp include/question.h \
 		include/Functions.hpp \
 		include/theme.h \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		ui_question.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o question.o src/question.cpp
+
+ScoreTable.o: src/ScoreTable.cpp include/ScoreTable.hpp \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/utilisateur.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/theme.h \
+		include/ButtonID.hpp \
+		include/md5.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ScoreTable.o src/ScoreTable.cpp
 
 theme.o: src/theme.cpp include/theme.h \
 		include/mainwindow.h \
@@ -550,6 +613,9 @@ theme.o: src/theme.cpp include/theme.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/utilisateur.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		ui_theme.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o theme.o src/theme.cpp
 
@@ -559,8 +625,14 @@ utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
+		include/ButtonID.hpp \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
 		ui_utilisateur.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilisateur.o src/utilisateur.cpp
+
+moc_ButtonID.o: moc_ButtonID.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ButtonID.o moc_ButtonID.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

@@ -157,12 +157,12 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="newName"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="newNameButton">
          <property name="text">
-          <string>PushButton</string>
+          <string>Changer le nom</string>
          </property>
         </widget>
        </item>
@@ -204,12 +204,12 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="newPass"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="newPassButton">
          <property name="text">
-          <string>PushButton</string>
+          <string>Changer le mot de passe</string>
          </property>
         </widget>
        </item>
@@ -244,7 +244,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QTableWidget" name="tableWidget">
+        <widget class="QTableWidget" name="table">
          <column>
           <property name="text">
            <string>Points</string>
@@ -260,13 +260,6 @@
            <string>Supprimer</string>
           </property>
          </column>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>Supprimer tout les scores</string>
-         </property>
         </widget>
        </item>
       </layout>
@@ -302,7 +295,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="desactivateButton">
        <property name="text">
         <string>Désactiver l'utilisateur</string>
        </property>
@@ -322,7 +315,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="deleteButton">
        <property name="text">
         <string>Supprimer l'utilisateur</string>
        </property>

@@ -47,25 +47,24 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QLineEdit *newName;
+    QPushButton *newNameButton;
     QSpacerItem *verticalSpacer;
     QSpacerItem *horizontalSpacer_6;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
-    QPushButton *pushButton_2;
+    QLineEdit *newPass;
+    QPushButton *newPassButton;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer_7;
     QVBoxLayout *verticalLayout_3;
-    QTableWidget *tableWidget;
-    QPushButton *pushButton_4;
+    QTableWidget *table;
     QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_5;
+    QPushButton *desactivateButton;
     QSpacerItem *horizontalSpacer_3;
-    QPushButton *pushButton_3;
+    QPushButton *deleteButton;
     QSpacerItem *horizontalSpacer_5;
 
     void setupUi(QDialog *Utilisateur)
@@ -148,15 +147,15 @@ public:
 
         verticalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(Utilisateur);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        newName = new QLineEdit(Utilisateur);
+        newName->setObjectName(QStringLiteral("newName"));
 
-        verticalLayout->addWidget(lineEdit);
+        verticalLayout->addWidget(newName);
 
-        pushButton = new QPushButton(Utilisateur);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        newNameButton = new QPushButton(Utilisateur);
+        newNameButton->setObjectName(QStringLiteral("newNameButton"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(newNameButton);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -176,15 +175,15 @@ public:
 
         verticalLayout_2->addWidget(label_2);
 
-        lineEdit_2 = new QLineEdit(Utilisateur);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        newPass = new QLineEdit(Utilisateur);
+        newPass->setObjectName(QStringLiteral("newPass"));
 
-        verticalLayout_2->addWidget(lineEdit_2);
+        verticalLayout_2->addWidget(newPass);
 
-        pushButton_2 = new QPushButton(Utilisateur);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        newPassButton = new QPushButton(Utilisateur);
+        newPassButton->setObjectName(QStringLiteral("newPassButton"));
 
-        verticalLayout_2->addWidget(pushButton_2);
+        verticalLayout_2->addWidget(newPassButton);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -199,27 +198,18 @@ public:
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        tableWidget = new QTableWidget(Utilisateur);
-        if (tableWidget->columnCount() < 3)
-            tableWidget->setColumnCount(3);
+        table = new QTableWidget(Utilisateur);
+        if (table->columnCount() < 3)
+            table->setColumnCount(3);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        table->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        table->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        if (tableWidget->rowCount() < 1)
-            tableWidget->setRowCount(1);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem3);
-        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        table->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        table->setObjectName(QStringLiteral("table"));
 
-        verticalLayout_3->addWidget(tableWidget);
-
-        pushButton_4 = new QPushButton(Utilisateur);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-
-        verticalLayout_3->addWidget(pushButton_4);
+        verticalLayout_3->addWidget(table);
 
 
         horizontalLayout_2->addLayout(verticalLayout_3);
@@ -237,19 +227,19 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        pushButton_5 = new QPushButton(Utilisateur);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        desactivateButton = new QPushButton(Utilisateur);
+        desactivateButton->setObjectName(QStringLiteral("desactivateButton"));
 
-        horizontalLayout->addWidget(pushButton_5);
+        horizontalLayout->addWidget(desactivateButton);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_3);
 
-        pushButton_3 = new QPushButton(Utilisateur);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        deleteButton = new QPushButton(Utilisateur);
+        deleteButton->setObjectName(QStringLiteral("deleteButton"));
 
-        horizontalLayout->addWidget(pushButton_3);
+        horizontalLayout->addWidget(deleteButton);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -271,20 +261,17 @@ public:
         Question->setText(QApplication::translate("Utilisateur", "Question", Q_NULLPTR));
         label_3->setText(QApplication::translate("Utilisateur", "Gestion des Utilisateurs :", Q_NULLPTR));
         label->setText(QApplication::translate("Utilisateur", "Changer le nom d'utilisateur :", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Utilisateur", "PushButton", Q_NULLPTR));
+        newNameButton->setText(QApplication::translate("Utilisateur", "Changer le nom", Q_NULLPTR));
         label_2->setText(QApplication::translate("Utilisateur", "Changer le mot de passe :", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("Utilisateur", "PushButton", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        newPassButton->setText(QApplication::translate("Utilisateur", "Changer le mot de passe", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem = table->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("Utilisateur", "Points", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        QTableWidgetItem *___qtablewidgetitem1 = table->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QApplication::translate("Utilisateur", "Seed", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
+        QTableWidgetItem *___qtablewidgetitem2 = table->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QApplication::translate("Utilisateur", "Supprimer", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem3->setText(QApplication::translate("Utilisateur", "#1", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("Utilisateur", "Supprimer tout les scores", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("Utilisateur", "D\303\251sactiver l'utilisateur", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("Utilisateur", "Supprimer l'utilisateur", Q_NULLPTR));
+        desactivateButton->setText(QApplication::translate("Utilisateur", "D\303\251sactiver l'utilisateur", Q_NULLPTR));
+        deleteButton->setText(QApplication::translate("Utilisateur", "Supprimer l'utilisateur", Q_NULLPTR));
     } // retranslateUi
 
 };

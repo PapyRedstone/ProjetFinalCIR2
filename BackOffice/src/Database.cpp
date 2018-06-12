@@ -14,8 +14,6 @@ Database::Database(const std::string& url, const std::string& user, const std::s
 }
 
 void Database::errorMessage(sql::SQLException& e){
-  std::cerr << "# ERR: SQLException in " << __FILE__;
-  std::cerr << "(" << __FUNCTION__ << ") on line " << __LINE__ << "\n";
   std::cerr << "# ERR: " << e.what();
   std::cerr << " (MySQL error code: " << e.getErrorCode();
   std::cerr << ", SQLState: " << e.getSQLState() << " )" << "\n";
@@ -25,9 +23,9 @@ std::vector<std::map<std::string, std::string>> Database::executeQuery(std::stri
   std::vector<std::map<std::string, std::string>> result;
 
   try{
-    std::shared_ptr<sql::ResultSet> resultSql(statement->executeQuery(query));
+    if(toLower(getWords(query,' ')[0]) == "select"){
+      std::shared_ptr<sql::ResultSet> resultSql(statement->executeQuery(query));
 
-    if(toLower(getWords(query,' ')[0]) == "select"){    
       std::vector<std::string> tableCol = getCollumsName(query);
       
       while (resultSql->next()) {
@@ -38,6 +36,8 @@ std::vector<std::map<std::string, std::string>> Database::executeQuery(std::stri
 	
 	result.push_back(tmp);
       }
+    }else{
+      statement->execute(query);
     }
   }catch(sql::SQLException &e){
     errorMessage(e);

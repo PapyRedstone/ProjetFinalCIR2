@@ -1,0 +1,17 @@
+#ifndef TABLE_HPP
+#define TABLE_HPP
+
+#include <QtWidgets>
+
+class Table{
+public:
+  Table(QTableWidget* t):table{t}{}
+  ~Table{}
+
+  void loadTable();
+
+private:
+  QTableWidget* table
+}
+
+#endif
