@@ -1,7 +1,7 @@
 #include "question.h"
 #include "ui_question.h"
 
-Question::Question(std::shared_ptr<Database> db, QWidget *parent) :
+Question::Question(std::shared_ptr<Database> db, int id_theme, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Question),
     database{db}

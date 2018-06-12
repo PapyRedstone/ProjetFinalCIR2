@@ -7,18 +7,18 @@ class PushButtonID: public QPushButton{
   Q_OBJECT
 
 public:
-  PushButtonID(int id):ID{id}{
+  PushButtonID(int id, QWidget* p=nullptr):QPushButton{p}, ID{id}{
     connect(this,SIGNAL(released()),this,SLOT(push()));
   }
   virtual ~PushButtonID(){}
 
 public slots:
   void push(){
-    emit click(ID);
+    emit click(this,ID);
   }
 
 signals:
-  void click(int);
+  void click(PushButtonID*, int);
 
 private:
   int ID;

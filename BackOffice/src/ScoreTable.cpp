@@ -15,7 +15,7 @@ void ScoreTable::loadTable(std::string userName, Utilisateur* utili){
     
     auto but = new PushButtonID(std::stoi(row["id_palmares"]));
     but->setText("Supprimer");
-    QObject::connect(but, SIGNAL(click(int)), utili, SLOT(removeOneScore(int)));
+    QObject::connect(but, SIGNAL(click(PushButtonID*,int)), utili, SLOT(removeOneScore(PushButtonID*,int)));
     table->setCellWidget(table->rowCount()-1, 2, but);
   }
 }

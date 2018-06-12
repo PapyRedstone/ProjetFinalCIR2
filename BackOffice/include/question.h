@@ -14,7 +14,7 @@ class Question : public QDialog
     Q_OBJECT
 
 public:
-    explicit Question(std::shared_ptr<Database> db, QWidget *parent = 0);
+    explicit Question(std::shared_ptr<Database> db, int id_theme, QWidget *parent = 0);
     ~Question();
 
 private slots:

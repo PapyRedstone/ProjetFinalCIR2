@@ -114,7 +114,7 @@
    <item>
     <layout class="QHBoxLayout" name="THEME">
      <item>
-      <widget class="QTableWidget" name="tableWidget">
+      <widget class="QTableWidget" name="table">
        <property name="acceptDrops">
         <bool>false</bool>
        </property>
@@ -130,23 +130,13 @@
        <attribute name="verticalHeaderMinimumSectionSize">
         <number>25</number>
        </attribute>
-       <row>
-        <property name="text">
-         <string>Isen</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>Animaux</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>People</string>
-        </property>
-       </row>
        <column>
         <property name="text">
+         <string>Nom</string>
+        </property>
+       </column>
+       <column>
+         <property name="text">
          <string>Activer</string>
         </property>
        </column>
@@ -200,10 +190,10 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="Ajoutheme"/>
+      <widget class="QLineEdit" name="newTheme"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="addTheme">
        <property name="text">
         <string>Ajout</string>
        </property>

@@ -58,9 +58,12 @@ SOURCES       = src/Database.cpp \
 		src/menu.cpp \
 		src/proposition.cpp \
 		src/question.cpp \
+		src/QuestionTable.cpp \
 		src/ScoreTable.cpp \
 		src/theme.cpp \
+		src/ThemeTable.cpp \
 		src/utilisateur.cpp moc_ButtonID.cpp \
+		moc_TextEditID.cpp \
 		moc_mainwindow.cpp \
 		moc_menu.cpp \
 		moc_proposition.cpp \
@@ -75,10 +78,13 @@ OBJECTS       = Database.o \
 		menu.o \
 		proposition.o \
 		question.o \
+		QuestionTable.o \
 		ScoreTable.o \
 		theme.o \
+		ThemeTable.o \
 		utilisateur.o \
 		moc_ButtonID.o \
+		moc_TextEditID.o \
 		moc_mainwindow.o \
 		moc_menu.o \
 		moc_proposition.o \
@@ -162,7 +168,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/md5.hpp \
+		include/QuestionTable.hpp \
 		include/ScoreTable.hpp \
+		include/TextEditID.hpp \
+		include/ThemeTable.hpp \
 		include/mainwindow.h \
 		include/menu.h \
 		include/proposition.h \
@@ -176,8 +185,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/menu.cpp \
 		src/proposition.cpp \
 		src/question.cpp \
+		src/QuestionTable.cpp \
 		src/ScoreTable.cpp \
 		src/theme.cpp \
+		src/ThemeTable.cpp \
 		src/utilisateur.cpp
 QMAKE_TARGET  = BackOffice
 DESTDIR       = 
@@ -360,8 +371,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/ButtonID.hpp include/Database.hpp include/Functions.hpp include/md5.hpp include/ScoreTable.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/md5.cpp src/menu.cpp src/proposition.cpp src/question.cpp src/ScoreTable.cpp src/theme.cpp src/utilisateur.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/ButtonID.hpp include/Database.hpp include/Functions.hpp include/md5.hpp include/QuestionTable.hpp include/ScoreTable.hpp include/TextEditID.hpp include/ThemeTable.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/md5.cpp src/menu.cpp src/proposition.cpp src/question.cpp src/QuestionTable.cpp src/ScoreTable.cpp src/theme.cpp src/ThemeTable.cpp src/utilisateur.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents UI/mainwindow.ui UI/menu.ui UI/proposition.ui UI/question.ui UI/theme.ui UI/utilisateur.ui $(DISTDIR)/
 
 
@@ -394,21 +405,29 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_ButtonID.cpp moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
+compiler_moc_header_make_all: moc_ButtonID.cpp moc_TextEditID.cpp moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_ButtonID.cpp moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
+	-$(DEL_FILE) moc_ButtonID.cpp moc_TextEditID.cpp moc_mainwindow.cpp moc_menu.cpp moc_proposition.cpp moc_question.cpp moc_theme.cpp moc_utilisateur.cpp
 moc_ButtonID.cpp: include/ButtonID.hpp \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/ButtonID.hpp -o moc_ButtonID.cpp
+
+moc_TextEditID.cpp: include/TextEditID.hpp \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice -I/home/alex/ProjetFinalCIR2/BackOffice/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/TextEditID.hpp -o moc_TextEditID.cpp
 
 moc_mainwindow.cpp: include/menu.h \
 		include/mainwindow.h \
 		include/theme.h \
 		include/Database.hpp \
 		include/Functions.hpp \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		include/mainwindow.h \
@@ -421,8 +440,11 @@ moc_menu.cpp: include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		include/menu.h \
@@ -435,8 +457,11 @@ moc_proposition.cpp: include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		include/proposition.h \
@@ -449,8 +474,11 @@ moc_question.cpp: include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		include/question.h \
@@ -463,8 +491,11 @@ moc_theme.cpp: include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		include/theme.h \
@@ -477,8 +508,11 @@ moc_utilisateur.cpp: include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		include/utilisateur.h \
@@ -537,8 +571,11 @@ main.o: src/main.cpp include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
@@ -548,8 +585,11 @@ mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_mainwindow.h
@@ -563,8 +603,11 @@ menu.o: src/menu.cpp include/menu.h \
 		include/theme.h \
 		include/Database.hpp \
 		include/Functions.hpp \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_menu.h
@@ -576,8 +619,11 @@ proposition.o: src/proposition.cpp include/proposition.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_proposition.h
@@ -589,12 +635,29 @@ question.o: src/question.cpp include/question.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
-		include/utilisateur.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_question.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o question.o src/question.cpp
+
+QuestionTable.o: src/QuestionTable.cpp include/QuestionTable.hpp \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/theme.h \
+		include/ThemeTable.hpp \
+		include/utilisateur.h \
+		include/ScoreTable.hpp \
+		include/md5.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QuestionTable.o src/QuestionTable.cpp
 
 ScoreTable.o: src/ScoreTable.cpp include/ScoreTable.hpp \
 		include/Database.hpp \
@@ -603,7 +666,10 @@ ScoreTable.o: src/ScoreTable.cpp include/ScoreTable.hpp \
 		include/mainwindow.h \
 		include/menu.h \
 		include/theme.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
 		include/md5.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ScoreTable.o src/ScoreTable.cpp
 
@@ -616,8 +682,25 @@ theme.o: src/theme.cpp include/theme.h \
 		include/ButtonID.hpp \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
+		include/ThemeTable.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
 		ui_theme.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o theme.o src/theme.cpp
+
+ThemeTable.o: src/ThemeTable.cpp include/ThemeTable.hpp \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/theme.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/utilisateur.h \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
+		include/question.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ThemeTable.o src/ThemeTable.cpp
 
 utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
 		include/mainwindow.h \
@@ -625,7 +708,10 @@ utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/theme.h \
+		include/ThemeTable.hpp \
 		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_utilisateur.h
@@ -633,6 +719,9 @@ utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
 
 moc_ButtonID.o: moc_ButtonID.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ButtonID.o moc_ButtonID.cpp
+
+moc_TextEditID.o: moc_TextEditID.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_TextEditID.o moc_TextEditID.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

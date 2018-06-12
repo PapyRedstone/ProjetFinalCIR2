@@ -76,7 +76,7 @@ void Utilisateur::updateActivateButtonState(){
   }
 }
 
-void Utilisateur::removeOneScore(int id){
+void Utilisateur::removeOneScore(PushButtonID*,int id){
   std::string query = "DELETE FROM Palmares WHERE id_palmares='" + std::to_string(id);
 
   query += "'";

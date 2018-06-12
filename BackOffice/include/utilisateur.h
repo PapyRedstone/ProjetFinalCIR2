@@ -28,7 +28,7 @@ private slots:
     void onItemClick(QListWidgetItem*);
     void changeName();
     void changePass();
-    void removeOneScore(int);
+    void removeOneScore(PushButtonID*,int);
     void desactiveUser();
     void activeUser();
     void deleteUser();
