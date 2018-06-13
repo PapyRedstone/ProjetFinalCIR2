@@ -6,7 +6,7 @@ TEMPLATE = app
 TARGET = BackOffice
 INCLUDEPATH += . include
 LIBS += -lmysqlcppconn -lcrypt
-QMAKE_CXXFLAGS += -g
+QMAKE_CXXFLAGS += -g -std=c++14
 
 QT += gui core widgets
 

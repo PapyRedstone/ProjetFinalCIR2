@@ -9,7 +9,7 @@
 
 }
 #imageMenu{
-	width:100%;
+	width:20%;
 	margin-top: 0.5%;
 	margin-bottom: 0.5%;
 	align-content:center;
@@ -18,11 +18,13 @@
 }
 
 #boutonMenu {
-width: 150%;
-margin-left: 55%;
+margin-left: 70%;
+margin-right: 150%;
+width: 300%;
+
 }
 #back1{
-	width: 100%;
+	width: 10%;
 		flex-direction: column;
-		margin-right: 0%;
+		text-align: center;
 }
