@@ -43,7 +43,7 @@ void Proposition::changeProposition(TextEditID* txt, int id){
 }
 
 void Proposition::changePropositionState(PushButtonID* but, int id){
-  std::string query = "SELECT est_active FROM Proposition WHERE id_propostion='"+std::to_string(id)+"'";
+  std::string query = "SELECT est_active FROM Proposition WHERE id_proposition='"+std::to_string(id)+"'";
   
   int currentState = !std::stoi(database->executeQuery(query)[0]["est_active"]);
 
