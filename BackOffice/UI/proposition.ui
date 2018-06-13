@@ -114,7 +114,7 @@
    <item>
     <layout class="QHBoxLayout" name="PROPOSITION">
      <item>
-      <widget class="QTableWidget" name="tableWidget">
+      <widget class="QTableWidget" name="table">
        <property name="acceptDrops">
         <bool>false</bool>
        </property>
@@ -124,40 +124,26 @@
        <property name="showGrid">
         <bool>true</bool>
        </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>200</number>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>49</number>
+       </attribute>
        <attribute name="verticalHeaderDefaultSectionSize">
         <number>25</number>
        </attribute>
        <attribute name="verticalHeaderMinimumSectionSize">
         <number>25</number>
        </attribute>
-       <row>
-        <property name="text">
-         <string>CIR,CSI</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>RENNAIS,BRESTOIS</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>TATOU,PIKACHU</string>
-        </property>
-       </row>
        <column>
         <property name="text">
-         <string>Note</string>
+         <string>Proposition</string>
         </property>
        </column>
        <column>
         <property name="text">
          <string>Activer</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Modifier</string>
         </property>
        </column>
        <column>
@@ -198,21 +184,65 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Ajouter une question :</string>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="topMargin">
+        <number>0</number>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="AjoutQuestion"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Ajout</string>
+       <property name="bottomMargin">
+        <number>0</number>
        </property>
-      </widget>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Ajouter une propsition :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="proposition"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ajouterProposition">
+           <property name="text">
+            <string>Ajout</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="choix1">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="choix2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="choix3">
+         <property name="text">
+          <string>Les deux</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <spacer name="horizontalSpacer_3">
@@ -221,8 +251,8 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>0</width>
+         <height>0</height>
         </size>
        </property>
       </spacer>

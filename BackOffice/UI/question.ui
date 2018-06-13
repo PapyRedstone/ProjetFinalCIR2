@@ -114,7 +114,7 @@
    <item>
     <layout class="QHBoxLayout" name="QUESTION">
      <item>
-      <widget class="QTableWidget" name="tableWidget">
+      <widget class="QTableWidget" name="table">
        <property name="acceptDrops">
         <bool>false</bool>
        </property>
@@ -124,27 +124,25 @@
        <property name="showGrid">
         <bool>true</bool>
        </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>150</number>
+       </attribute>
        <attribute name="verticalHeaderDefaultSectionSize">
         <number>25</number>
        </attribute>
        <attribute name="verticalHeaderMinimumSectionSize">
         <number>25</number>
        </attribute>
-       <row>
+       <column>
         <property name="text">
-         <string>CIR,CSI</string>
+         <string>Choix 1</string>
         </property>
-       </row>
-       <row>
+       </column>
+       <column>
         <property name="text">
-         <string>RENNAIS,BRESTOIS</string>
+         <string>Choix 2</string>
         </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>TATOU,PIKACHU</string>
-        </property>
-       </row>
+       </column>
        <column>
         <property name="text">
          <string>Activer</string>
@@ -200,10 +198,13 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="AjoutQuestion"/>
+      <widget class="QLineEdit" name="choix1"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QLineEdit" name="choix2"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ajouterQuestion">
        <property name="text">
         <string>Ajout</string>
        </property>

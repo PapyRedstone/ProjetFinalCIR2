@@ -124,6 +124,9 @@
        <property name="showGrid">
         <bool>true</bool>
        </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>200</number>
+       </attribute>
        <attribute name="verticalHeaderDefaultSectionSize">
         <number>25</number>
        </attribute>
@@ -136,7 +139,7 @@
         </property>
        </column>
        <column>
-         <property name="text">
+        <property name="text">
          <string>Activer</string>
         </property>
        </column>
@@ -228,24 +231,9 @@
     </spacer>
    </item>
   </layout>
-  <zorder>layoutWidget</zorder>
-  <zorder>label</zorder>
-  <zorder>Ajoutheme</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_2</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>tableWidget</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>horizontalSpacer_3</zorder>
   <zorder>verticalSpacer</zorder>
   <zorder>verticalSpacer_2</zorder>
   <zorder>verticalSpacer_3</zorder>
-  <zorder>horizontalSpacer_5</zorder>
-  <zorder>horizontalSpacer_6</zorder>
-  <zorder>horizontalSpacer_7</zorder>
-  <zorder>horizontalSpacer_8</zorder>
-  <zorder>horizontalSpacer_5</zorder>
-  <zorder>horizontalSpacer_6</zorder>
  </widget>
  <resources/>
  <connections/>

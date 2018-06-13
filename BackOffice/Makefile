@@ -57,6 +57,7 @@ SOURCES       = src/Database.cpp \
 		src/md5.cpp \
 		src/menu.cpp \
 		src/proposition.cpp \
+		src/PropositionTable.cpp \
 		src/question.cpp \
 		src/QuestionTable.cpp \
 		src/ScoreTable.cpp \
@@ -77,6 +78,7 @@ OBJECTS       = Database.o \
 		md5.o \
 		menu.o \
 		proposition.o \
+		PropositionTable.o \
 		question.o \
 		QuestionTable.o \
 		ScoreTable.o \
@@ -168,6 +170,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		include/Database.hpp \
 		include/Functions.hpp \
 		include/md5.hpp \
+		include/PropositionTable.hpp \
 		include/QuestionTable.hpp \
 		include/ScoreTable.hpp \
 		include/TextEditID.hpp \
@@ -184,6 +187,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/md5.cpp \
 		src/menu.cpp \
 		src/proposition.cpp \
+		src/PropositionTable.cpp \
 		src/question.cpp \
 		src/QuestionTable.cpp \
 		src/ScoreTable.cpp \
@@ -371,8 +375,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/ButtonID.hpp include/Database.hpp include/Functions.hpp include/md5.hpp include/QuestionTable.hpp include/ScoreTable.hpp include/TextEditID.hpp include/ThemeTable.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/md5.cpp src/menu.cpp src/proposition.cpp src/question.cpp src/QuestionTable.cpp src/ScoreTable.cpp src/theme.cpp src/ThemeTable.cpp src/utilisateur.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/ButtonID.hpp include/Database.hpp include/Functions.hpp include/md5.hpp include/PropositionTable.hpp include/QuestionTable.hpp include/ScoreTable.hpp include/TextEditID.hpp include/ThemeTable.hpp include/mainwindow.h include/menu.h include/proposition.h include/question.h include/theme.h include/utilisateur.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/Database.cpp src/Functions.cpp src/main.cpp src/mainwindow.cpp src/md5.cpp src/menu.cpp src/proposition.cpp src/PropositionTable.cpp src/question.cpp src/QuestionTable.cpp src/ScoreTable.cpp src/theme.cpp src/ThemeTable.cpp src/utilisateur.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents UI/mainwindow.ui UI/menu.ui UI/proposition.ui UI/question.ui UI/theme.ui UI/utilisateur.ui $(DISTDIR)/
 
 
@@ -427,6 +431,8 @@ moc_mainwindow.cpp: include/menu.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -444,6 +450,8 @@ moc_menu.cpp: include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -461,6 +469,8 @@ moc_proposition.cpp: include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -478,6 +488,8 @@ moc_question.cpp: include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -495,6 +507,8 @@ moc_theme.cpp: include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -512,6 +526,8 @@ moc_utilisateur.cpp: include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -575,6 +591,8 @@ main.o: src/main.cpp include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp
@@ -589,6 +607,8 @@ mainwindow.o: src/mainwindow.cpp include/mainwindow.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -607,6 +627,8 @@ menu.o: src/menu.cpp include/menu.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
@@ -623,11 +645,29 @@ proposition.o: src/proposition.cpp include/proposition.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/QuestionTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_proposition.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o proposition.o src/proposition.cpp
+
+PropositionTable.o: src/PropositionTable.cpp include/PropositionTable.hpp \
+		include/Database.hpp \
+		include/Functions.hpp \
+		include/ButtonID.hpp \
+		include/TextEditID.hpp \
+		include/question.h \
+		include/mainwindow.h \
+		include/menu.h \
+		include/theme.h \
+		include/ThemeTable.hpp \
+		include/utilisateur.h \
+		include/ScoreTable.hpp \
+		include/md5.hpp \
+		include/proposition.h \
+		include/QuestionTable.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PropositionTable.o src/PropositionTable.cpp
 
 question.o: src/question.cpp include/question.h \
 		include/mainwindow.h \
@@ -641,6 +681,8 @@ question.o: src/question.cpp include/question.h \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		ui_question.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o question.o src/question.cpp
 
@@ -656,7 +698,8 @@ QuestionTable.o: src/QuestionTable.cpp include/QuestionTable.hpp \
 		include/ThemeTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
-		include/md5.hpp
+		include/md5.hpp \
+		include/proposition.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QuestionTable.o src/QuestionTable.cpp
 
 ScoreTable.o: src/ScoreTable.cpp include/ScoreTable.hpp \
@@ -670,6 +713,8 @@ ScoreTable.o: src/ScoreTable.cpp include/ScoreTable.hpp \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/md5.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ScoreTable.o src/ScoreTable.cpp
 
@@ -685,6 +730,8 @@ theme.o: src/theme.cpp include/theme.h \
 		include/ThemeTable.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		ui_theme.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o theme.o src/theme.cpp
 
@@ -699,7 +746,9 @@ ThemeTable.o: src/ThemeTable.cpp include/ThemeTable.hpp \
 		include/utilisateur.h \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
-		include/question.h
+		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ThemeTable.o src/ThemeTable.cpp
 
 utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
@@ -712,6 +761,8 @@ utilisateur.o: src/utilisateur.cpp include/utilisateur.h \
 		include/ButtonID.hpp \
 		include/TextEditID.hpp \
 		include/question.h \
+		include/proposition.h \
+		include/QuestionTable.hpp \
 		include/ScoreTable.hpp \
 		include/md5.hpp \
 		ui_utilisateur.h

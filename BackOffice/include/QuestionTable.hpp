@@ -1,5 +1,5 @@
-#ifndef THEME_TABLE_HPP
-#define THEME_TABLE_HPP
+#ifndef QUESTION_TABLE_HPP
+#define QUESTION_TABLE_HPP
 
 #include <QtWidgets>
 #include <memory>
@@ -7,18 +7,19 @@
 #include "ButtonID.hpp"
 #include "TextEditID.hpp"
 
-class Theme;
+class Question;
 
-class ThemeTable{
+class QuestionTable{
 public:
-  ThemeTable(std::shared_ptr<Database> db, QTableWidget* t=nullptr);
-  ~ThemeTable(){}
+  QuestionTable(std::shared_ptr<Database> db, int id, QTableWidget* t=nullptr);
+  ~QuestionTable(){}
 
-  void loadTable(Theme*);
+  void loadTable(Question*);
 
 private:
   QTableWidget* table;
-  std::shared_ptr<Database> database; 
+  std::shared_ptr<Database> database;
+  int id_theme;
 };
 
 #endif
