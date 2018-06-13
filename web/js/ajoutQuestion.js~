@@ -1,0 +1,49 @@
+//<button type="button" class="list-group-item">Animaux</button>
+
+//ajaxRequest('POST','/php/request.php/user',callbackAuth,'login='+userName+'&password='+password);
+
+function callbackTheme(txt){
+    div = document.getElementById("theme");
+
+    str = '';
+
+    data = JSON.parse(txt);    
+    
+    for(d in data){
+	str += '<button type="button" class="list-group-item" id="'+data[d]["id_theme"]+'">'+data[d]["theme"]+'</button>';
+    }
+
+    div.innerHTML = str;
+}
+
+function callbackProposition(txt){
+    div = document.getElementById("proposition");
+
+    str = '';
+
+    data = JSON.parse(txt);    
+    
+    for(d in data){
+	str += '<button type="button" class="list-group-item" id="'+data[d]["id_theme"]+'">'+data[d]["theme"]+'</button>';
+    }
+
+    div.innerHTML = str;
+}
+
+function callbackQuestion(txt){
+    div = document.getElementById("question");
+
+    str = '';
+
+    data = JSON.parse(txt);    
+    
+    for(d in data){
+	str += '<button type="button" class="list-group-item" id="'+data[d]["id_theme"]+'">'+data[d]["theme"]+'</button>';
+    }
+
+    div.innerHTML = str;
+}
+
+window.onload = function() {
+    ajaxRequest('GET','/web/php/crud.php',callbackTheme,'ressource=theme');
+}

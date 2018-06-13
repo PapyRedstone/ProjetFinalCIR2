@@ -1,0 +1,30 @@
+@charset " utf-8 ";
+
+#back{
+	background-color:black ;
+	  width:100%;
+				display:flex;
+				align-items: center;
+
+
+}
+#imageMenu{
+	width:20%;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	align-content:center;
+	margin-left: 43%;
+
+}
+
+#boutonMenu {
+margin-left: 70%;
+margin-right: 150%;
+width: 300%;
+
+}
+#back1{
+	width: 10%;
+		flex-direction: column;
+		text-align: center;
+}
