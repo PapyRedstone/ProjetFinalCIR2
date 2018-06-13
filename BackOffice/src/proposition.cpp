@@ -62,6 +62,10 @@ void Proposition::deleteProposition(PushButtonID*, int id){
 }
 
 void Proposition::addProposition(){
+  if(ui->proposition->text().toStdString() == ""){
+    return;
+  }
+  
   int bonneRep;
 
   if(ui->choix1->isChecked()){

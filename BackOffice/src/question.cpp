@@ -67,6 +67,10 @@ void Question::deleteQuestion(PushButtonID*, int id){
 }
 
 void Question::addQuestion(){
+  if(ui->choix2->text().toStdString() == "" || ui->choix1->text().toStdString() == ""){
+    return;
+  }
+  
   std::string query = "INSERT INTO Question VALUES (NULL,'" + ui->choix1->text().toStdString() + "','" + ui->choix2->text().toStdString() + "',1, " + std::to_string(id_theme) + ")";
 
   database->executeQuery(query);

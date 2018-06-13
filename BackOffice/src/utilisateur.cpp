@@ -87,6 +87,10 @@ void Utilisateur::removeOneScore(PushButtonID*,int id){
 }
 
 void Utilisateur::changeName(){
+  if(ui->newName->text().toStdString() == ""){
+    return;
+  }
+  
   std::string query = "UPDATE user SET name='" + ui->newName->text().toStdString();
   query += "' WHERE name='" + userName;
   query += "'";
@@ -101,6 +105,10 @@ void Utilisateur::changeName(){
 }
 
 void Utilisateur::changePass(){
+  if(ui->newPass->text().toStdString() == ""){
+    return;
+  }
+  
   std::string pass_hash = crypt(md5(ui->newPass->text().toStdString()).c_str(),md5(userName).c_str());
   std::string query = "UPDATE user SET password_hash='" + pass_hash;
   query += "' WHERE name='" + userName;

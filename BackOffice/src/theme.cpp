@@ -60,6 +60,10 @@ void Theme::deleteTheme(PushButtonID*, int id){
 }
 
 void Theme::addTheme(){
+  if(ui->newTheme->text().toStdString() == ""){
+    return;
+  }
+  
   std::string query = "INSERT INTO Theme VALUES (NULL,'" + ui->newTheme->text().toStdString() + "',1)";
 
   database->executeQuery(query);
