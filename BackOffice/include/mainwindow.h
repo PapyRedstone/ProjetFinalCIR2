@@ -13,11 +13,21 @@ namespace Ui {
 class MainWindow;
 }
 
+/**
+*\brief Classe représentant la page de connexion lors du lancement du programme*
+*
+*Classe prégénerer par QtDesigner qui represente la page de connexion 
+*/
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+	/*
+	*\brief Constructeur
+	*
+	*\param parent : QWidget parent de la fenetre
+	*/
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 

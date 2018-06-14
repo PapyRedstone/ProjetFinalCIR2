@@ -13,12 +13,24 @@ namespace Ui {
 class Question;
 }
 
+/**
+*\brief Classe representant la page de gestion des questions
+*/
 class Question : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Question(std::shared_ptr<Database> db, int id_theme, QWidget *parent = 0);
+  /**
+    *\brief Constructeur
+    *
+    *\param db : Conexion a une BDD
+    *
+    *\param id: id du theme auquelle seront lies les questions affiches
+    *
+    *\param parent : QWidget parent de la fenetre
+    */
+    explicit Question(std::shared_ptr<Database> db, int id, QWidget *parent = 0);
     ~Question();
 
 private slots:

@@ -1,0 +1,7 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node2" href="$classMenu.html" title="Classe representant la page du menu. " alt="" coords="139,5,193,32"/>
+<area shape="rect" id="node3" href="$classProposition.html" title="Classe representant la page de gestion des propositions. " alt="" coords="123,56,209,83"/>
+<area shape="rect" id="node4" href="$classQuestion.html" title="Classe representant la page de gestion des questions. " alt="" coords="129,107,203,133"/>
+<area shape="rect" id="node5" href="$classTheme.html" title="Classe representant la page de gestions des themes. " alt="" coords="135,157,197,184"/>
+<area shape="rect" id="node6" href="$classUtilisateur.html" title="Classe representant la page de gestion des utilisateurs. " alt="" coords="125,208,207,235"/>
+</map>

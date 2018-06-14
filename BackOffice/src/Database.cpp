@@ -46,13 +46,13 @@ std::vector<std::map<std::string, std::string>> Database::executeQuery(std::stri
   return result;
 }
 
-std::vector<std::string> getCollumsName(const std::string& s){
+std::vector<std::string> Database::getCollumsName(const std::string& s){
   auto words = getWords(s,' ');
 
   return removeUselessWords(words);
 }
 
-std::vector<std::string> removeUselessWords(std::vector<std::string> words){
+std::vector<std::string> Database::removeUselessWords(std::vector<std::string> words){
   std::vector<std::string> resultWords;
 
   for(auto word: words){
@@ -69,7 +69,7 @@ std::vector<std::string> removeUselessWords(std::vector<std::string> words){
   return removeUselessLetters(resultWords);
 }
 
-std::vector<std::string> separateWords(std::vector<std::string> words){
+std::vector<std::string> Database::separateWords(std::vector<std::string> words){
   std::vector<std::string> result;
   for_each(words.begin(), words.end(), [&](std::string& s){
       for(auto i: getWords(s,',')){
@@ -79,7 +79,7 @@ std::vector<std::string> separateWords(std::vector<std::string> words){
   return removeUselessLetters(result);
 }
 
-std::vector<std::string> removeUselessLetters(std::vector<std::string> words){
+std::vector<std::string> Database::removeUselessLetters(std::vector<std::string> words){
   bool separateword=false;
   words.erase(std::remove(words.begin(), words.end(), ","), words.end());
   for_each(words.begin(), words.end(), [&](std::string& s){

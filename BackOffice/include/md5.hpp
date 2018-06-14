@@ -35,7 +35,11 @@ documentation and/or software.
  
 #include <cstring>
 #include <iostream>
- 
+
+/**
+*\brief ECRIT PAR Frank Thilo (thilo@unix-ag.org)
+*/
+
  
 // a small class for calculating MD5 hashes of strings or byte arrays
 // it is not meant to be fast or secure

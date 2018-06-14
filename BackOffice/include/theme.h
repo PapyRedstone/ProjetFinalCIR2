@@ -12,11 +12,21 @@ namespace Ui {
 class Theme;
 }
 
+/**
+*\brief Classe representant la page de gestions des themes
+*/
 class Theme : public QDialog
 {
     Q_OBJECT
 
 public:
+    /**
+    *\brief Constructeur
+    *
+    *\param db : Conexion a une BDD
+    *
+    *\param parent : QWidget parent de la fenetre
+    */
     explicit Theme(std::shared_ptr<Database> db, QWidget *parent = 0);
     ~Theme();
 

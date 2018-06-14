@@ -12,11 +12,23 @@ namespace Ui {
 class Proposition;
 }
 
+/**
+*\brief Classe representant la page de gestion des propositions
+*/
 class Proposition : public QDialog
 {
     Q_OBJECT
 
 public:
+    /**
+    *\brief Constructeur
+    *
+    *\param db : Conexion a une BDD
+    *
+    *\param id: id de la question auquelle seront lies les propositions affiches
+    *
+    *\param parent : QWidget parent de la fenetre
+    */
     explicit Proposition(std::shared_ptr<Database> db, int id, QWidget *parent = 0);
     ~Proposition();
 
