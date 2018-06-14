@@ -38,6 +38,7 @@ private slots:
     void changePropositionState(PushButtonID* but, int id);
     void deleteProposition(PushButtonID*, int id);
     void addProposition();
+    void toTheme();
 
 private:
     Ui::Proposition *ui;

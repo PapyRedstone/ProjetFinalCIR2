@@ -1,5 +1,6 @@
 #include "proposition.h"
 #include "ui_proposition.h"
+#include "theme.h"
 
 Proposition::Proposition(std::shared_ptr<Database> db, int id, QWidget *parent) :
     QDialog(parent),
@@ -15,6 +16,7 @@ Proposition::Proposition(std::shared_ptr<Database> db, int id, QWidget *parent) 
     propositionTable.loadTable(this);
 
     connect(ui->ajouterProposition, SIGNAL(released()), this, SLOT(addProposition()));
+    connect(ui->theme, SIGNAL(released()), this, SLOT(toTheme()));
 
     std::string query = "SELECT choix1, choix2 FROM Question WHERE id_question='" + std::to_string(id_question) + "'";
 
@@ -34,6 +36,12 @@ void Proposition::on_Utilisateur_clicked()
     this->hide();
     Utilisateur *utilisateur = new Utilisateur(database);
     utilisateur->show();
+}
+
+void Proposition::toTheme(){
+    this->hide();
+    Theme *theme = new Theme(database);
+    theme->show();
 }
 
 void Proposition::changeProposition(TextEditID* txt, int id){

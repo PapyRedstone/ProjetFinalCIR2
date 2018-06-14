@@ -41,6 +41,7 @@ private slots:
   void propositionPage(PushButtonID*, int);
   void deleteQuestion(PushButtonID*, int);
   void addQuestion();
+  void toTheme();
 
 
 private:

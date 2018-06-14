@@ -53,6 +53,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="theme">
+       <property name="text">
+        <string>Theme</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="Utilisateur">
        <property name="text">
         <string>Utilisateur</string>

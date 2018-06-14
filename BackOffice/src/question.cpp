@@ -1,5 +1,6 @@
 #include "question.h"
 #include "ui_question.h"
+#include "theme.h"
 
 Question::Question(std::shared_ptr<Database> db, int id, QWidget *parent) :
     QDialog(parent),
@@ -15,6 +16,7 @@ Question::Question(std::shared_ptr<Database> db, int id, QWidget *parent) :
   questionTable.loadTable(this);
 
   connect(ui->ajouterQuestion, SIGNAL(released()), this, SLOT(addQuestion()));
+  connect(ui->theme, SIGNAL(released()), this, SLOT(toTheme()));
 }
 
 Question::~Question()
@@ -27,6 +29,12 @@ void Question::on_Utilisateur_clicked()
     this->hide();
     Utilisateur *utilisateur = new Utilisateur(database);
     utilisateur->show();
+}
+
+void Question::toTheme(){
+    this->hide();
+    Theme *theme = new Theme(database);
+    theme->show();
 }
 
 void Question::changeChoix1(TextEditID* txt, int id){
